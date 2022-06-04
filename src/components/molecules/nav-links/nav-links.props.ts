@@ -1,3 +1,3 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes } from "react";
 
-export type Props = HTMLAttributes<HTMLDivElement> & {};
+export type Props = HTMLAttributes<HTMLElement> & {};

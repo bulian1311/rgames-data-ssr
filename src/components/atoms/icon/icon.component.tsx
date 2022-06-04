@@ -6,6 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon, LinesIcon } from "../../../icons";
 export const Icon = ({
   type,
   size = "normal",
+  className,
   ...props
 }: Props): JSX.Element => {
   let Icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
@@ -24,7 +25,7 @@ export const Icon = ({
 
   return (
     <i
-      className={clsx({
+      className={clsx(className, {
         "w-2 h-2": size === "sm",
         "w-5 h-5": size === "normal",
         "w-8 h-8": size === "lg",
