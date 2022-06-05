@@ -1,7 +1,12 @@
 import React from "react";
 import clsx from "clsx";
 import { Props } from "./icon.props";
-import { ChevronLeftIcon, ChevronRightIcon, LinesIcon } from "../../../icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  LinesIcon,
+  RemoveIcon,
+} from "../../../icons";
 
 export const Icon = ({
   type,
@@ -20,6 +25,9 @@ export const Icon = ({
       break;
     case "lines":
       Icon = LinesIcon;
+      break;
+    case "remove":
+      Icon = RemoveIcon;
       break;
   }
 

@@ -1,1 +1,1 @@
-export type IconType = "chevron-left" | "chevron-right" | "lines";
+export type IconType = "chevron-left" | "chevron-right" | "lines" | "remove";
