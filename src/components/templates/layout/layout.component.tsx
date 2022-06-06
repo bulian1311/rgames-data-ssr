@@ -16,7 +16,9 @@ export const Layout = ({ children }: Props): JSX.Element => {
       </div>
 
       <Navbar />
-      <main className="container mx-auto mt-4">{children}</main>
+      <main className="container px-6 sm:px-10 md:px-20 lg:px-32 pt-20">
+        {children}
+      </main>
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
-import { IconType } from "../../../icons/icon.types";
+import { TIcon } from "../../../types/icon.type";
 
 export type Props = HTMLAttributes<HTMLElement> & {
-  type: IconType;
+  type: TIcon;
   size?: "sm" | "normal" | "lg";
 };

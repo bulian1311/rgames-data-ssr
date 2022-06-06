@@ -9,7 +9,7 @@ export const Navbar = ({ ...props }: Props): JSX.Element => {
 
   return (
     <nav
-      className="bg-slate-900 flex items-center font-medium justify-between px-8 py-4"
+      className="bg-slate-900 flex items-center font-medium justify-between px-8 fixed w-full"
       {...props}
     >
       <Icon
@@ -24,7 +24,7 @@ export const Navbar = ({ ...props }: Props): JSX.Element => {
         </a>
       </Link>
       <NavLinks isOpen={isNavOpen} />
-      <div className="z-50">
+      <div className="z-50 my-2 md:my-0">
         <Button name="Войти" />
       </div>
     </nav>
