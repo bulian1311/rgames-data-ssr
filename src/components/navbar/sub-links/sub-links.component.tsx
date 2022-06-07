@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { SubLink } from "../";
+import { SubLink } from "../sub-link";
 import { Props } from "./sub-links.props";
 
 export const SubLinks = ({

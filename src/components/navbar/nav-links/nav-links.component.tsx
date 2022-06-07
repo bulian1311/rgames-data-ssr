@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { NavLink } from "../";
+import { NavLink } from "../nav-link";
 import { Props } from "./nav-links.props";
 
 export const NavLinks = ({ isOpen, ...props }: Props): JSX.Element => {

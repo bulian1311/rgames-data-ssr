@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { SubLinks } from "../";
+import { SubLinks } from "../sub-links";
 import { Props } from "./nav-link.props";
 
 export const NavLink = ({ link, ...props }: Props): JSX.Element => {
