@@ -16,7 +16,7 @@ export const Layout = ({ children }: Props): JSX.Element => {
       </div>
 
       <Navbar />
-      <main className="container px-6 sm:px-10 md:px-20 lg:px-32 pt-20">
+      <main className="container px-6 pt-20 sm:px-10 md:px-20 lg:px-60 md:pt-32">
         {children}
       </main>
       <Footer />
