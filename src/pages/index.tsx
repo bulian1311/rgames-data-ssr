@@ -1,75 +1,12 @@
 import type { NextPage } from "next";
+import { Block, Headline } from "../components/ui";
 
 const Home: NextPage = () => {
   return (
     <>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
-      <div>Homepage</div>
+      <Block>
+        <Headline tag="h2">Home Page</Headline>
+      </Block>
     </>
   );
 };
