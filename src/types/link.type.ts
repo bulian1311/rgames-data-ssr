@@ -1,4 +1,7 @@
-import { TSubLink } from "./sub-link.type";
+export type TSubLink = {
+  name: string;
+  to: string;
+};
 
 export type TNavLink = {
   name: string;
