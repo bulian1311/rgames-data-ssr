@@ -79,7 +79,7 @@ type TStats = {
   attackspeed: number;
 };
 
-export type TLolChampionShort = {
+export type TResLolChampionShort = {
   version: string;
   id: string;
   key: string;
@@ -93,41 +93,44 @@ export type TLolChampionShort = {
   stats: TStats;
 };
 
-export type TLolChampionFull = {
-  type: string;
-  format: string;
+export type TLolChampionShort = {
   version: string;
-  data: {
-    Aatrox: {
-      id: string;
-      key: string;
-      name: string;
-      title: string;
-      image: TImage;
-      skins: TSkin[];
-      lore: string;
-      blurb: string;
-      allytips: string[];
-      enemytips: string[];
-      tags: string[];
-      partype: string;
-      info: TInfo;
-      stats: TStats;
-      spells: TSpell[];
-      passive: {
-        name: string;
-        description: string;
-        image: {
-          full: string;
-          sprite: string;
-          group: string;
-          x: number;
-          y: number;
-          w: number;
-          h: number;
-        };
-      };
-      recommended: [];
+  id: string;
+  key: string;
+  name: string;
+  title: string;
+  image: string;
+  tags: string[];
+};
+
+export type TResLolChampionFull = {
+  id: string;
+  key: string;
+  name: string;
+  title: string;
+  image: TImage;
+  skins: TSkin[];
+  lore: string;
+  blurb: string;
+  allytips: string[];
+  enemytips: string[];
+  tags: string[];
+  partype: string;
+  info: TInfo;
+  stats: TStats;
+  spells: TSpell[];
+  passive: {
+    name: string;
+    description: string;
+    image: {
+      full: string;
+      sprite: string;
+      group: string;
+      x: number;
+      y: number;
+      w: number;
+      h: number;
     };
   };
+  recommended: [];
 };

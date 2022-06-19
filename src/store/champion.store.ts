@@ -1,5 +1,5 @@
 import { makeObservable, observable, action } from "mobx";
-import { dataService } from "../services";
+import { lolDataService } from "../services";
 import { RootStore } from "./root.store";
 
 export class ChampionStore {
@@ -20,7 +20,7 @@ export class ChampionStore {
   };
 
   fetchChampions = () => {
-    const champions = dataService.fetctChampions();
+    const champions = lolDataService.fetctChampions();
     this.setChampions(champions);
   };
 }
