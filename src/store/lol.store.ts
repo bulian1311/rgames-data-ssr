@@ -2,7 +2,11 @@ import { makeObservable, observable, action } from "mobx";
 import { lolDataService } from "../services";
 import { RootStore } from "./root.store";
 
-export class ChampionStore {
+export type TLolHydration = {
+  champions: any[];
+};
+
+export class LolStore {
   rootStore: RootStore;
 
   constructor(rootStore: RootStore) {
@@ -19,8 +23,14 @@ export class ChampionStore {
     this.champions = value;
   };
 
-  fetchChampions = () => {
-    const champions = lolDataService.fetctChampions();
+  fetchChampions = async () => {
+    const champions = await lolDataService.fetctChampions();
     this.setChampions(champions);
   };
+
+  hydrate(data?: TLolHydration) {
+    if (data) {
+      this.champions = data.champions;
+    }
+  }
 }
