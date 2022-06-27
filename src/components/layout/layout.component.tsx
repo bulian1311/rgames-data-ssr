@@ -9,6 +9,7 @@ export const Layout = ({ children }: Props): JSX.Element => {
     <>
       <div className="fixed top-0 left-0 w-full h-full z-[-1]">
         <Image
+          priority
           layout="fill"
           objectFit="cover"
           objectPosition="cover"

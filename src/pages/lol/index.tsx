@@ -1,5 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
-import { lolDataService } from "../../services";
+import type { NextPage } from "next";
 import { Block, Headline, Sidebar } from "../../components";
 import { TLolChampionShort } from "../../types";
 
@@ -12,18 +11,10 @@ const LolPage: NextPage<TProps> = ({ champions }) => {
     <div className="flex space-x-8">
       <Sidebar />
       <Block className="grow flex">
-        <Headline tag="h2">Чемпионы</Headline>
+        <Headline tag="h2">Новости</Headline>
       </Block>
     </div>
   );
-};
-
-export const getStaticProps: GetStaticProps<TProps> = async () => {
-  const champions = await lolDataService.fetctChampions();
-
-  return {
-    props: { champions },
-  };
 };
 
 export default LolPage;
