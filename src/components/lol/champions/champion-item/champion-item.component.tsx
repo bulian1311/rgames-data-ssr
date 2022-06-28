@@ -10,7 +10,6 @@ export const ChampionItem = ({ champion, ...props }: Props): JSX.Element => {
         <a>
           <Image
             src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${champion.image}`}
-            priority
             width={100}
             height={100}
           />
