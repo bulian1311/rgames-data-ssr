@@ -6,8 +6,8 @@ import { Props } from "./nav-links.props";
 export const NavLinks = ({ isOpen, ...props }: Props): JSX.Element => {
   const links = [
     {
-      name: "Link 1",
-      to: "/",
+      name: "League of Legends",
+      to: "/lol",
       sublinks: [
         { name: "Sublink1", to: "/" },
         { name: "Sublink2", to: "/" },
@@ -16,8 +16,7 @@ export const NavLinks = ({ isOpen, ...props }: Props): JSX.Element => {
         { name: "Sublink5", to: "/" },
       ],
     },
-    { name: "Link 2", to: "/" },
-    { name: "Link 3", to: "/" },
+    { name: "Team Fight Tactiks", to: "/tft" },
   ];
 
   const renderLinks = () => {
