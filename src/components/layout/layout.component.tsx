@@ -1,7 +1,7 @@
 import React from "react";
 import { Props } from "./layout.props";
-import { Navbar } from "../navbar";
-import { Footer } from "../footer";
+import { Navbar } from "./navbar";
+import { Footer } from "./footer";
 import Image from "next/image";
 
 export const Layout = ({ children }: Props): JSX.Element => {
