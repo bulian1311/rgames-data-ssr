@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Props } from "./navbar.props";
 import Link from "next/link";
 import { NavLinks } from "./nav-links";
-import { Button, Icon } from "../ui";
+import { Button, Icon } from "../../ui";
 
 export const Navbar = ({ ...props }: Props): JSX.Element => {
   const [isNavOpen, setIsNavOpen] = useState(false);

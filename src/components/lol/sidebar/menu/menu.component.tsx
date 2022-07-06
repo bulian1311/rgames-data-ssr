@@ -1,5 +1,5 @@
 import React from "react";
-import { Block } from "../../ui";
+import { Block } from "../../../ui";
 import { MenuLink } from "./menu-link";
 import { Props } from "./menu.props";
 

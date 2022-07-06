@@ -35,7 +35,7 @@ export const Icon = ({
     <i
       className={clsx(className, {
         "w-2 h-2": size === "sm",
-        "w-5 h-5": size === "normal",
+        "w-4 h-4": size === "normal",
         "w-8 h-8": size === "lg",
       })}
       {...props}
