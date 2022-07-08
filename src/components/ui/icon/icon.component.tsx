@@ -6,6 +6,10 @@ import {
   ChevronRightIcon,
   LinesIcon,
   RemoveIcon,
+  SearchIcon,
+  StopIcon,
+  ThLargeIcon,
+  ThIcon,
 } from "../../../icons";
 
 export const Icon = ({
@@ -14,7 +18,7 @@ export const Icon = ({
   className,
   ...props
 }: Props): JSX.Element => {
-  let Icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  let Icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element = SearchIcon;
 
   switch (type) {
     case "chevron-left":
@@ -28,6 +32,18 @@ export const Icon = ({
       break;
     case "remove":
       Icon = RemoveIcon;
+      break;
+    case "search":
+      Icon = SearchIcon;
+      break;
+    case "stop":
+      Icon = StopIcon;
+      break;
+    case "th-large":
+      Icon = ThLargeIcon;
+      break;
+    case "th":
+      Icon = ThIcon;
       break;
   }
 

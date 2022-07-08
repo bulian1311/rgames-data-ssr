@@ -6,7 +6,7 @@ const HomePage: NextPage = () => {
     <>
       <Block>
         <Headline tag="h2">Home Page</Headline>
-        <Input icon="remove" />
+        <Input icon="th" />
       </Block>
     </>
   );
