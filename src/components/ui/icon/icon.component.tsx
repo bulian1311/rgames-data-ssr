@@ -48,8 +48,8 @@ export const Icon = ({
   }
 
   return (
-    <i
-      className={clsx(className, {
+    <span
+      className={clsx(className, "block", {
         "w-2 h-2": size === "sm",
         "w-4 h-4": size === "normal",
         "w-8 h-8": size === "lg",
@@ -57,6 +57,6 @@ export const Icon = ({
       {...props}
     >
       <Icon fill="white" className="text-slate-200" />
-    </i>
+    </span>
   );
 };
