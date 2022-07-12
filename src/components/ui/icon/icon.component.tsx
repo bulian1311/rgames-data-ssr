@@ -10,6 +10,10 @@ import {
   StopIcon,
   ThLargeIcon,
   ThIcon,
+  CaretDownIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  CaretUpIcon,
 } from "../../../icons";
 
 export const Icon = ({
@@ -44,6 +48,18 @@ export const Icon = ({
       break;
     case "th":
       Icon = ThIcon;
+      break;
+    case "caret-down":
+      Icon = CaretDownIcon;
+      break;
+    case "caret-left":
+      Icon = CaretLeftIcon;
+      break;
+    case "caret-right":
+      Icon = CaretRightIcon;
+      break;
+    case "caret-up":
+      Icon = CaretUpIcon;
       break;
   }
 
