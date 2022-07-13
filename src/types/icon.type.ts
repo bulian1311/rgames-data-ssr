@@ -6,4 +6,8 @@ export type TIcon =
   | "search"
   | "stop"
   | "th"
-  | "th-large";
+  | "th-large"
+  | "caret-down"
+  | "caret-left"
+  | "caret-right"
+  | "caret-up";
