@@ -1,11 +1,15 @@
 import React from "react";
+import { useAppSelector } from "../../../hooks";
 import { ChampionItem } from "./champion-item";
 import { Filter } from "./filter";
-import { Sort } from "./sort";
+import { Sort, selectAsc, selectValue } from "./sort";
 import { Display } from "./display";
 import { Props } from "./champions.props";
 
 export const Champions = ({ champions, ...props }: Props): JSX.Element => {
+  const asc = useAppSelector(selectAsc);
+  const value = useAppSelector(selectValue);
+
   const renderChampions = champions.map((champ) => (
     <ChampionItem key={champ.key} champion={champ} />
   ));

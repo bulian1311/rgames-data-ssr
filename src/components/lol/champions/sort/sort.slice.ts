@@ -1,33 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../../../store";
 
-type TState = {
-  value: "name";
-  status: "asc" | "desc";
+export type TFilterValue = "name" | "ban";
+
+export type TState = {
+  value: TFilterValue;
+  asc: boolean;
 };
 
 const initialState: TState = {
   value: "name",
-  status: "asc",
+  asc: true,
 };
 
 export const sortSlice = createSlice({
   name: "lol/champions/sort",
   initialState,
   reducers: {
-    nameAsc: (state) => {
-      state.value = "name";
-      state.status = "asc";
+    setAsc: (state, action: PayloadAction<boolean>) => {
+      state.asc = action.payload;
     },
-    nameDesc: (state) => {
-      state.value = "name";
-      state.status = "desc";
+    setValue: (state, action: PayloadAction<TFilterValue>) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { nameAsc, nameDesc } = sortSlice.actions;
+export const { setAsc, setValue } = sortSlice.actions;
 
-export const selectValue = (state: TState) => state.value;
-export const selectStatus = (state: TState) => state.status;
+export const selectValue = (state: RootState) => state.lolChampionSort.value;
+export const selectAsc = (state: RootState) => state.lolChampionSort.asc;
 
-export const sortReducer = sortSlice.reducer;
+export const lolChampionSortReducer = sortSlice.reducer;
