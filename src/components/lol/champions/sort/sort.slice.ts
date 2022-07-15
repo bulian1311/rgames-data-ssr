@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../../../store";
 
-export type TFilterValue = "name" | "ban";
+export type TSortValue = "name" | "ban";
 
-export type TState = {
-  value: TFilterValue;
+export type TSortState = {
+  value: TSortValue;
   asc: boolean;
 };
 
-const initialState: TState = {
+const initialState: TSortState = {
   value: "name",
   asc: true,
 };
@@ -17,18 +17,19 @@ export const sortSlice = createSlice({
   name: "lol/champions/sort",
   initialState,
   reducers: {
-    setAsc: (state, action: PayloadAction<boolean>) => {
+    setSortAsc: (state, action: PayloadAction<boolean>) => {
       state.asc = action.payload;
     },
-    setValue: (state, action: PayloadAction<TFilterValue>) => {
+    setSortValue: (state, action: PayloadAction<TSortValue>) => {
       state.value = action.payload;
     },
   },
 });
 
-export const { setAsc, setValue } = sortSlice.actions;
+export const { setSortAsc, setSortValue } = sortSlice.actions;
 
-export const selectValue = (state: RootState) => state.lolChampionSort.value;
-export const selectAsc = (state: RootState) => state.lolChampionSort.asc;
+export const selectSortValue = (state: RootState) =>
+  state.lolChampionSort.value;
+export const selectSortAsc = (state: RootState) => state.lolChampionSort.asc;
 
 export const lolChampionSortReducer = sortSlice.reducer;

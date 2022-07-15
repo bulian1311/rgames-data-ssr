@@ -2,11 +2,11 @@ import React from "react";
 import clsx from "clsx";
 import { Icon } from "../../../../ui";
 import { useAppSelector } from "../../../../../hooks";
-import { selectAsc } from "../sort.slice";
+import { selectSortAsc } from "../sort.slice";
 import { Props } from "./sort-button.props";
 
 export const SortButton = ({ name, active, ...props }: Props): JSX.Element => {
-  const asc = useAppSelector(selectAsc);
+  const asc = useAppSelector(selectSortAsc);
 
   return (
     <button

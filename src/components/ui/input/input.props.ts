@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react";
 import { TIcon } from "../../../types";
 
-export type Props = HTMLAttributes<HTMLInputElement> & {
+export type TProps = InputHTMLAttributes<HTMLInputElement> & {
   icon?: TIcon;
 };

@@ -1,9 +1,17 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { lolChampionSortReducer } from "../components/lol/champions/sort";
+import {
+  lolChampionSortReducer,
+  lolChampionDisplayReducer,
+  lolChampionFilterReducer,
+} from "../components/lol";
 
 export function makeStore() {
   return configureStore({
-    reducer: { lolChampionSort: lolChampionSortReducer },
+    reducer: {
+      lolChampionSort: lolChampionSortReducer,
+      lolChampionDisplay: lolChampionDisplayReducer,
+      lolChampionFilter: lolChampionFilterReducer,
+    },
     devTools: true,
   });
 }

@@ -2,24 +2,24 @@ import React from "react";
 import { SortButton } from "./sort-button";
 import { useAppSelector, useAppDispatch } from "../../../../hooks";
 import {
-  selectValue,
-  selectAsc,
-  setValue,
-  setAsc,
-  TFilterValue,
+  selectSortValue,
+  selectSortAsc,
+  setSortValue,
+  setSortAsc,
+  TSortValue,
 } from "./sort.slice";
 import { Props } from "./sort.props";
 
 export const Sort = ({ ...props }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
-  const activeFilter = useAppSelector(selectValue);
-  const asc = useAppSelector(selectAsc);
+  const activeFilter = useAppSelector(selectSortValue);
+  const asc = useAppSelector(selectSortAsc);
 
-  const handleClick = (value: TFilterValue) => {
-    value !== activeFilter && dispatch(setValue(value));
-    value !== activeFilter && dispatch(setAsc(true));
+  const handleClick = (value: TSortValue) => {
+    value !== activeFilter && dispatch(setSortValue(value));
+    value !== activeFilter && dispatch(setSortAsc(true));
 
-    value === activeFilter && dispatch(setAsc(!asc));
+    value === activeFilter && dispatch(setSortAsc(!asc));
   };
 
   return (

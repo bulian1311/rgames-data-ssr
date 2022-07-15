@@ -1,26 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import { DisplayButton } from "./display-button";
+import { useAppSelector, useAppDispatch } from "../../../../hooks";
+import {
+  selectDisplayValue,
+  TDisplayValue,
+  setDisplayValue,
+} from "./display.slice";
 import { Props } from "./display.props";
 
 export const Display = ({ ...props }: Props): JSX.Element => {
-  const [active, setActive] = useState<"lines" | "th-large" | "th">("th-large");
+  const dispatch = useAppDispatch();
+  const displayValue = useAppSelector(selectDisplayValue);
+
+  const handleClick = (value: TDisplayValue) => {
+    dispatch(setDisplayValue(value));
+  };
 
   return (
     <div className="flex items-center" {...props}>
       <DisplayButton
         icon="lines"
-        onClick={() => setActive("lines")}
-        active={active === "lines"}
+        onClick={() => handleClick("lines")}
+        active={displayValue === "lines"}
       />
       <DisplayButton
         icon="th-large"
-        onClick={() => setActive("th-large")}
-        active={active === "th-large"}
+        onClick={() => handleClick("th-large")}
+        active={displayValue === "th-large"}
       />
       <DisplayButton
         icon="th"
-        onClick={() => setActive("th")}
-        active={active === "th"}
+        onClick={() => handleClick("th")}
+        active={displayValue === "th"}
       />
     </div>
   );

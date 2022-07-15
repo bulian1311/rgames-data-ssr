@@ -1,8 +1,8 @@
 import React from "react";
 import { Icon } from "../icon";
-import { Props } from "./input.props";
+import { TProps } from "./input.props";
 
-export const Input = ({ icon, ...props }: Props): JSX.Element => {
+export const Input = ({ icon, ...props }: TProps): JSX.Element => {
   return (
     <label className="relative block">
       {icon && (
