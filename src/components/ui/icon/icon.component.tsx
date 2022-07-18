@@ -66,7 +66,7 @@ export const Icon = ({
   return (
     <span
       className={clsx(className, "block", {
-        "w-2 h-2": size === "sm",
+        "w-3 h-3": size === "sm",
         "w-4 h-4": size === "normal",
         "w-8 h-8": size === "lg",
       })}

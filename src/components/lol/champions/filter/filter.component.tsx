@@ -14,11 +14,20 @@ export const Filter = ({ className, ...props }: Props): JSX.Element => {
     dispatch(setFilterValue(newValue));
   };
 
+  const onClear = () => {
+    dispatch(setFilterValue(""));
+  };
+
   return (
     <div className={clsx(className, "flex flex-col")} {...props}>
       <div className="flex gap-4 items-center">
         <span>По имени: </span>
-        <Input icon="search" onChange={handleChange} value={filterValue} />
+        <Input
+          icon="search"
+          onChange={handleChange}
+          onClear={onClear}
+          value={filterValue}
+        />
       </div>
     </div>
   );
