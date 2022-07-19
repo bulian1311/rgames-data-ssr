@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
-import { Block, Sidebar, Headline } from "../../../components";
+import type { NextPage, GetStaticProps } from "next";
+import { Block, Sidebar, Headline, LolLayout } from "../../../components";
+import { lolDataService } from "../../../services";
 
 type TProps = {
   items: any[];
@@ -7,13 +8,18 @@ type TProps = {
 
 const ItemsPage: NextPage<TProps> = ({ items }) => {
   return (
-    <div className="flex space-x-8">
-      <Sidebar />
-      <Block className="grow flex">
-        <Headline>Items</Headline>
-      </Block>
-    </div>
+    <LolLayout>
+      <Headline>Items</Headline>
+    </LolLayout>
   );
+};
+
+export const getStaticProps: GetStaticProps<TProps> = async () => {
+  const items = await lolDataService.fetchItems();
+
+  return {
+    props: { items },
+  };
 };
 
 export default ItemsPage;

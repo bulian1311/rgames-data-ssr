@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import { lolDataService } from "../../../services";
-import { Block, Headline, Sidebar, Champions } from "../../../components";
+import { Champions, LolLayout } from "../../../components";
 import { TLolChampionShort } from "../../../types";
 
 type TProps = {
@@ -9,12 +9,9 @@ type TProps = {
 
 const ChampionsPage: NextPage<TProps> = ({ champions }) => {
   return (
-    <div className="flex space-x-8">
-      <Sidebar />
-      <Block className="grow flex">
-        <Champions champions={champions} />
-      </Block>
-    </div>
+    <LolLayout>
+      <Champions champions={champions} />
+    </LolLayout>
   );
 };
 

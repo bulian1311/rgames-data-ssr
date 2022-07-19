@@ -3,6 +3,7 @@ import {
   TLolChampionShort,
   TResLolChampionFull,
   TResLolChampionShort,
+  TLolItem,
 } from "../../types";
 
 class LolDataService {
@@ -43,6 +44,19 @@ class LolDataService {
     } catch (err) {
       console.error(err);
       return null;
+    }
+  };
+
+  fetchItems = async (): Promise<TLolItem[]> => {
+    try {
+      const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
+
+      const resItems: TLolItem[] = Object.values(res.data.data);
+
+      return resItems;
+    } catch (err) {
+      console.error(err);
+      return [];
     }
   };
 }

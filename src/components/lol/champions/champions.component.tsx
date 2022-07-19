@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import clsx from "clsx";
 import { useAppSelector } from "../../../hooks";
-import { ChampionItemSmall } from "./champion-item";
+import { ChampionItemSmall } from "./champion-item-small";
 import { ChampionItemLarge } from "./champion-item-large";
 import { ChampionItemLine } from "./champion-item-line";
 import { Filter, selectFilterValue } from "./filter";
@@ -74,7 +74,7 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
         <Display />
       </div>
       <div
-        className={clsx("flex flex-wrap justify-between gap-2", {
+        className={clsx("flex flex-wrap gap-2", {
           "flex-col": displayValue === "lines",
         })}
         {...props}
