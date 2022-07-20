@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
-import { Block, Sidebar, Headline, LolLayout } from "../../../components";
+import { Headline, LolLayout, Items } from "../../../components";
 import { lolDataService } from "../../../services";
 
 type TProps = {
@@ -9,7 +9,7 @@ type TProps = {
 const ItemsPage: NextPage<TProps> = ({ items }) => {
   return (
     <LolLayout>
-      <Headline>Items</Headline>
+      <Items items={items} />
     </LolLayout>
   );
 };

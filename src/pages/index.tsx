@@ -6,7 +6,7 @@ const HomePage: NextPage = () => {
     <>
       <Block>
         <Headline tag="h2">Home Page</Headline>
-        <Input icon="search" />
+        <Input icon="search" onClear={() => {}} />
       </Block>
     </>
   );
