@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
-import { TLolItem } from "../../../../types";
+import { TLolItemShort } from "../../../../types";
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  item: TLolItem;
+  item: TLolItemShort;
 };

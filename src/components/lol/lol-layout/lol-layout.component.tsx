@@ -12,7 +12,7 @@ export const LolLayout = ({
   return (
     <div className={clsx(className, "flex space-x-8")} {...props}>
       <Sidebar />
-      <Block>{children}</Block>
+      <Block className="flex flex-col gap-4 w-full">{children}</Block>
     </div>
   );
 };

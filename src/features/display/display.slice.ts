@@ -1,18 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../../../store";
+import { RootState } from "../../store";
 
-export type TDisplayValue = "lines" | "th" | "th-large";
+export type TDisplayValue = "lines" | "cell" | "table";
 
 export type TDisplayState = {
   value: TDisplayValue;
 };
 
 const initialState: TDisplayState = {
-  value: "th",
+  value: "table",
 };
 
 export const displaySlice = createSlice({
-  name: "lol/champions/display",
+  name: "lol/display",
   initialState,
   reducers: {
     setDisplayValue: (state, action: PayloadAction<TDisplayValue>) => {
@@ -23,7 +23,6 @@ export const displaySlice = createSlice({
 
 export const { setDisplayValue } = displaySlice.actions;
 
-export const selectDisplayValue = (state: RootState) =>
-  state.lolChampionDisplay.value;
+export const selectDisplayValue = (state: RootState) => state.lolDisplay.value;
 
-export const lolChampionDisplayReducer = displaySlice.reducer;
+export const lolDisplayReducer = displaySlice.reducer;

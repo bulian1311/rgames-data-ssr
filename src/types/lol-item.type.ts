@@ -3,7 +3,8 @@ export type TLolItem = {
   description: string;
   colloq: string;
   plaintext: string;
-  into: string[];
+  into?: string[];
+  from?: string[];
   image: {
     full: string;
     sprite: string;
@@ -29,4 +30,15 @@ export type TLolItem = {
   stats: {
     FlatMovementSpeedMod: number;
   };
+  effect?: {
+    Effect1Amount: string;
+    Effect2Amount: string;
+  };
+};
+
+export type TLolItemShort = {
+  name: string;
+  image: string;
+  gold: number;
+  tags: string[];
 };

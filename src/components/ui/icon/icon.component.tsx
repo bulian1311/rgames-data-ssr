@@ -8,8 +8,8 @@ import {
   RemoveIcon,
   SearchIcon,
   StopIcon,
-  ThLargeIcon,
-  ThIcon,
+  TableIcon,
+  CellIcon,
   CaretDownIcon,
   CaretLeftIcon,
   CaretRightIcon,
@@ -43,11 +43,11 @@ export const Icon = ({
     case "stop":
       Icon = StopIcon;
       break;
-    case "th-large":
-      Icon = ThLargeIcon;
+    case "table":
+      Icon = TableIcon;
       break;
-    case "th":
-      Icon = ThIcon;
+    case "cell":
+      Icon = CellIcon;
       break;
     case "caret-down":
       Icon = CaretDownIcon;

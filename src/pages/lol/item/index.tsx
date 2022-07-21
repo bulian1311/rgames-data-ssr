@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
-import { Headline, LolLayout, Items } from "../../../components";
+import { LolLayout, Items } from "../../../components";
 import { lolDataService } from "../../../services";
 
 type TProps = {

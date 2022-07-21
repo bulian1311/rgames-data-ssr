@@ -4,6 +4,7 @@ import {
   TResLolChampionFull,
   TResLolChampionShort,
   TLolItem,
+  TLolItemShort,
 } from "../../types";
 
 class LolDataService {
@@ -15,7 +16,7 @@ class LolDataService {
 
       const resChampions: TResLolChampionShort[] = Object.values(res.data.data);
 
-      const champions = resChampions.map((champ) => ({
+      const champions: TLolChampionShort[] = resChampions.map((champ) => ({
         version: champ.version,
         id: champ.id,
         key: champ.key,
@@ -47,13 +48,20 @@ class LolDataService {
     }
   };
 
-  fetchItems = async (): Promise<TLolItem[]> => {
+  fetchItems = async (): Promise<TLolItemShort[]> => {
     try {
       const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
 
       const resItems: TLolItem[] = Object.values(res.data.data);
 
-      return resItems;
+      const items: TLolItemShort[] = resItems.map((item) => ({
+        name: item.name,
+        image: item.image.full,
+        gold: item.gold.total,
+        tags: item.tags,
+      }));
+
+      return items;
     } catch (err) {
       console.error(err);
       return [];

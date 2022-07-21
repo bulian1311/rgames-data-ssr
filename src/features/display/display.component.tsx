@@ -1,6 +1,6 @@
 import React from "react";
 import { DisplayButton } from "./display-button";
-import { useAppSelector, useAppDispatch } from "../../../../hooks";
+import { useAppSelector, useAppDispatch } from "../../hooks";
 import {
   selectDisplayValue,
   TDisplayValue,
@@ -18,20 +18,21 @@ export const Display = ({ ...props }: Props): JSX.Element => {
 
   return (
     <div className="flex items-center" {...props}>
+      <span className="uppercase mr-1">отображение:</span>
       <DisplayButton
         icon="lines"
         onClick={() => handleClick("lines")}
         active={displayValue === "lines"}
       />
       <DisplayButton
-        icon="th-large"
-        onClick={() => handleClick("th-large")}
-        active={displayValue === "th-large"}
+        icon="cell"
+        onClick={() => handleClick("cell")}
+        active={displayValue === "cell"}
       />
       <DisplayButton
-        icon="th"
-        onClick={() => handleClick("th")}
-        active={displayValue === "th"}
+        icon="table"
+        onClick={() => handleClick("table")}
+        active={displayValue === "table"}
       />
     </div>
   );
