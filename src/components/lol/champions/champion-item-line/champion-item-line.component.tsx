@@ -13,7 +13,7 @@ export const ChampionItemLine = ({
         <a>
           <Image
             className="hover:scale-110"
-            src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${champion.image}`}
+            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${champion.image}`}
             width={80}
             height={80}
           />

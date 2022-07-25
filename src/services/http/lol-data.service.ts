@@ -16,15 +16,23 @@ class LolDataService {
 
       const resChampions: TResLolChampionShort[] = Object.values(res.data.data);
 
-      const champions: TLolChampionShort[] = resChampions.map((champ) => ({
-        version: champ.version,
-        id: champ.id,
-        key: champ.key,
-        name: champ.name,
-        title: champ.title,
-        image: champ.image.full,
-        tags: champ.tags,
-      }));
+      const champions: TLolChampionShort[] = resChampions.map((champ) => {
+        const champion = {
+          version: champ.version,
+          id: champ.id,
+          key: champ.key,
+          name: champ.name,
+          title: champ.title,
+          image: champ.id + "_0.jpg",
+          tags: champ.tags,
+        };
+
+        if (champion.id === "Fiddlesticks") {
+          champion.image = "FiddleSticks_0.jpg";
+        }
+
+        return champion;
+      });
 
       return champions;
     } catch (err) {

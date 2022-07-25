@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ItemModal } from "../item-modal";
-import { Props } from "./item-cell.props";
+import { Props } from "./item-large.props";
 
-export const ItemCell = ({ item, ...props }: Props): JSX.Element => {
+export const ItemLarge = ({ item, ...props }: Props): JSX.Element => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hidden, setHidden] = useState<boolean>(true);
 
@@ -16,8 +16,8 @@ export const ItemCell = ({ item, ...props }: Props): JSX.Element => {
       {...props}
     >
       <Image
-        width={66}
-        height={66}
+        width={80}
+        height={80}
         src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image}`}
       />
       <ItemModal x={position.x} y={position.y} hidden={hidden} />
