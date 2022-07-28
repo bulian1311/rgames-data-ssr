@@ -7,8 +7,6 @@ export const ChampionItemLarge = ({
   champion,
   ...props
 }: Props): JSX.Element => {
-  console.log(champion.image);
-
   return (
     <div {...props}>
       <Link href={`/lol/champion/${champion.id}`}>

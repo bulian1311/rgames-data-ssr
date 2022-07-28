@@ -6,7 +6,8 @@ import { ChampionItemLarge } from "./champion-item-large";
 import { ChampionItemLine } from "./champion-item-line";
 // import { Filter, selectFilterValue } from "./filter";
 // import { Sort, selectSortAsc, selectSortValue } from "./sort";
-import { Display, selectDisplayValue } from "../../../features";
+import { Display } from "../display";
+import { selectDisplayValue } from "../../../store";
 import { Props } from "./champions.props";
 import { TLolChampionShort } from "../../../types";
 

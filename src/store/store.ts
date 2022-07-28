@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { lolDisplayReducer } from "../features";
+import { lolDisplayReducer } from "./lol";
 
 export function makeStore() {
   return configureStore({
