@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import { Headline, LolLayout } from "../../../../components";
-import { TLolItem } from "../../../../types";
+import { Headline, LolLayout } from "@components";
+import { TLolItem } from "@types";
 
 type TProps = {
   item: TLolItem;

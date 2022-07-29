@@ -1,20 +1,20 @@
 import React, { ReactNode } from "react";
 import clsx from "clsx";
-import { useAppSelector } from "../../../hooks";
-import { ChampionItemSmall } from "./champion-item-small";
-import { ChampionItemLarge } from "./champion-item-large";
-import { ChampionItemLine } from "./champion-item-line";
-import { Filter } from "./filter";
-import { Sort } from "./sort";
-import { Display } from "../display";
+import { useAppSelector } from "@hooks";
+import { Display } from "@components";
 import {
   selectDisplayValue,
   selectFilterValue,
   selectSortAsc,
   selectSortValue,
-} from "../../../store";
+} from "@store";
+import { TLolChampionShort } from "@types";
+import { ChampionItemSmall } from "./champion-item-small";
+import { ChampionItemLarge } from "./champion-item-large";
+import { ChampionItemLine } from "./champion-item-line";
+import { Filter } from "./filter";
+import { Sort } from "./sort";
 import { Props } from "./champions.props";
-import { TLolChampionShort } from "../../../types";
 
 export const Champions = ({ champions, ...props }: Props): JSX.Element => {
   const filterValue = useAppSelector(selectFilterValue);

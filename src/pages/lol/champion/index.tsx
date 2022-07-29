@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
-import { lolDataService } from "../../../services";
-import { Champions, LolLayout } from "../../../components";
-import { TLolChampionShort } from "../../../types";
+import { lolDataService } from "@services";
+import { Champions, LolLayout } from "@components";
+import { TLolChampionShort } from "@types";
 
 type TProps = {
   champions: TLolChampionShort[];

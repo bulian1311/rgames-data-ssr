@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Block, Sidebar, Headline } from "../../../components";
+import { Block, Sidebar, Headline } from "@components";
 
 type TProps = {
   items: any[];

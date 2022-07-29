@@ -1,8 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import { Display } from "../display";
-import { useAppSelector } from "../../../hooks";
-import { selectDisplayValue } from "../../../store";
+import { useAppSelector } from "@hooks";
+import { selectDisplayValue } from "@store";
+import { Display } from "@components";
 import { ItemLine } from "./item-line";
 import { ItemLarge } from "./item-large";
 import { ItemSmall } from "./item-small";

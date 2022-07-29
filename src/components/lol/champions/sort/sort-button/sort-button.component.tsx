@@ -1,8 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import { Icon } from "../../../../ui";
-import { useAppSelector } from "../../../../../hooks";
-import { selectSortAsc } from "../../../../../store";
+import { Icon } from "@components";
+import { useAppSelector } from "@hooks";
+import { selectSortAsc } from "@store";
 import { Props } from "./sort-button.props";
 
 export const SortButton = ({ name, active, ...props }: Props): JSX.Element => {

@@ -5,9 +5,9 @@ import type {
   NextPage,
 } from "next";
 import Image from "next/image";
-import { Block, Headline } from "../../../../components";
-import { lolDataService } from "../../../../services";
-import { TResLolChampionFull } from "../../../../types";
+import { Block, Headline } from "@components";
+import { lolDataService } from "@services";
+import { TResLolChampionFull } from "@types";
 
 type TProps = {
   champion: TResLolChampionFull;

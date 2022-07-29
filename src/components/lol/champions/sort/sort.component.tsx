@@ -1,13 +1,13 @@
 import React from "react";
-import { SortButton } from "./sort-button";
-import { useAppSelector, useAppDispatch } from "../../../../hooks";
+import { useAppSelector, useAppDispatch } from "@hooks";
 import {
   selectSortValue,
   selectSortAsc,
   setSortValue,
   setSortAsc,
   TSortValue,
-} from "../../../../store";
+} from "@store";
+import { SortButton } from "./sort-button";
 import { Props } from "./sort.props";
 
 export const Sort = ({ ...props }: Props): JSX.Element => {

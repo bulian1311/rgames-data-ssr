@@ -1,11 +1,7 @@
 import React from "react";
+import { useAppSelector, useAppDispatch } from "@hooks";
+import { selectDisplayValue, TDisplayValue, setDisplayValue } from "@store";
 import { DisplayButton } from "./display-button";
-import { useAppSelector, useAppDispatch } from "../../../hooks";
-import {
-  selectDisplayValue,
-  TDisplayValue,
-  setDisplayValue,
-} from "../../../store";
 import { Props } from "./display.props";
 
 export const Display = ({ ...props }: Props): JSX.Element => {

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import { Block, Headline, Sidebar } from "../../components";
-import { TLolChampionShort } from "../../types";
+import { Block, Headline, Sidebar } from "@components";
+import { TLolChampionShort } from "@types";
 
 type TProps = {
   champions: TLolChampionShort[];

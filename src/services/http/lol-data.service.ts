@@ -5,7 +5,7 @@ import {
   TResLolChampionShort,
   TLolItem,
   TLolItemShort,
-} from "../../types";
+} from "@types";
 
 class LolDataService {
   fetctChampions = async (): Promise<TLolChampionShort[]> => {

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { Block, Headline } from "../components/ui";
+import { Block, Headline } from "@components";
 
 const NotFound: NextPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Icon } from "../../../ui";
+import { Icon } from "@components";
 import { Props } from "./display-button.props";
 
 export const DisplayButton = ({

@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Block } from "../../ui";
-import { Sidebar } from "../sidebar";
+import { Block, Sidebar } from "@components";
 import { Props } from "./lol-layout.props";
 
 export const LolLayout = ({
