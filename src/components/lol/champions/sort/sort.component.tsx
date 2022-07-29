@@ -7,7 +7,7 @@ import {
   setSortValue,
   setSortAsc,
   TSortValue,
-} from "./sort.slice";
+} from "../../../../store";
 import { Props } from "./sort.props";
 
 export const Sort = ({ ...props }: Props): JSX.Element => {

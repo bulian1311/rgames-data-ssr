@@ -2,7 +2,7 @@ import React, { FormEvent } from "react";
 import clsx from "clsx";
 import { Input } from "../../../ui";
 import { useAppSelector, useAppDispatch } from "../../../../hooks";
-import { selectFilterValue, setFilterValue } from "./filter.slice";
+import { selectFilterValue, setFilterValue } from "../../../../store";
 import { Props } from "./filter.props";
 
 export const Filter = ({ className, ...props }: Props): JSX.Element => {

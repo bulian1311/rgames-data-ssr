@@ -4,17 +4,22 @@ import { useAppSelector } from "../../../hooks";
 import { ChampionItemSmall } from "./champion-item-small";
 import { ChampionItemLarge } from "./champion-item-large";
 import { ChampionItemLine } from "./champion-item-line";
-// import { Filter, selectFilterValue } from "./filter";
-// import { Sort, selectSortAsc, selectSortValue } from "./sort";
+import { Filter } from "./filter";
+import { Sort } from "./sort";
 import { Display } from "../display";
-import { selectDisplayValue } from "../../../store";
+import {
+  selectDisplayValue,
+  selectFilterValue,
+  selectSortAsc,
+  selectSortValue,
+} from "../../../store";
 import { Props } from "./champions.props";
 import { TLolChampionShort } from "../../../types";
 
 export const Champions = ({ champions, ...props }: Props): JSX.Element => {
-  // const filterValue = useAppSelector(selectFilterValue);
-  // const sortAsc = useAppSelector(selectSortAsc);
-  // const sortValue = useAppSelector(selectSortValue);
+  const filterValue = useAppSelector(selectFilterValue);
+  const sortAsc = useAppSelector(selectSortAsc);
+  const sortValue = useAppSelector(selectSortValue);
   const displayValue = useAppSelector(selectDisplayValue);
 
   let ChampionItem = ChampionItemSmall;
@@ -31,53 +36,53 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
       break;
   }
 
-  // const filterChampions = () => {
-  //   let filteredChampions = champions;
+  const filterChampions = () => {
+    let filteredChampions = champions;
 
-  //   if (filterValue) {
-  //     filteredChampions = champions.filter((champ) => {
-  //       return champ.name
-  //         .toLocaleLowerCase()
-  //         .includes(filterValue.toLocaleLowerCase());
-  //     });
-  //   }
+    if (filterValue) {
+      filteredChampions = champions.filter((champ) => {
+        const champRu = champ.name
+          .toLocaleLowerCase()
+          .includes(filterValue.toLocaleLowerCase());
 
-  //   return filteredChampions;
-  // };
+        const champEng = champ.id
+          .toLocaleLowerCase()
+          .includes(filterValue.toLocaleLowerCase());
 
-  // const sortChampions = (champs: TLolChampionShort[]) => {
-  //   let reversedList: TLolChampionShort[] = champs;
+        return champRu || champEng;
+      });
+    }
 
-  //   if (!sortAsc && sortValue === "name") {
-  //     reversedList = champs.slice().reverse();
-  //   }
+    return filteredChampions;
+  };
 
-  //   return reversedList;
-  // };
+  const sortChampions = (champs: TLolChampionShort[]) => {
+    let reversedList: TLolChampionShort[] = champs;
+
+    if (!sortAsc && sortValue === "name") {
+      reversedList = champs.slice().reverse();
+    }
+
+    return reversedList;
+  };
 
   const renderChampions = () => {
     let championItems: ReactNode = [];
-    // let filteredChampions = filterChampions();
-    // filteredChampions = sortChampions(filteredChampions);
+    let filteredChampions = filterChampions();
+    filteredChampions = sortChampions(filteredChampions);
 
-    // championItems = filteredChampions.map((champ) => (
-    //   <ChampionItem key={champ.key} champion={champ} />
-    // ));
-
-    //---------------
-    championItems = champions.map((champ) => (
+    championItems = filteredChampions.map((champ) => (
       <ChampionItem key={champ.key} champion={champ} />
     ));
-    //---------------
 
     return championItems;
   };
 
   return (
     <>
-      {/* <Filter /> */}
+      <Filter />
       <div className="flex items-center justify-between">
-        {/* <Sort /> */}
+        <Sort />
         <Display />
       </div>
       <div
