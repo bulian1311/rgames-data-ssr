@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { useAppSelector } from "@hooks";
 import { selectDisplayValue } from "@store";
 import { Display } from "@components";
+import { ItemsFilter } from "./filter";
 import { ItemLine } from "./item-line";
 import { ItemLarge } from "./item-large";
 import { ItemSmall } from "./item-small";
@@ -25,11 +26,12 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
   }
 
   const renderItems = () => {
-    return items.map((item) => <Item key={item.image} item={item} />);
+    return items.data.map((item) => <Item key={item.image} item={item} />);
   };
 
   return (
     <>
+      <ItemsFilter tree={items.tree} />
       <div className="flex items-center justify-end">
         <Display />
       </div>

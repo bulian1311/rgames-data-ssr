@@ -12,7 +12,7 @@ import { TLolChampionShort } from "@types";
 import { ChampionItemSmall } from "./champion-item-small";
 import { ChampionItemLarge } from "./champion-item-large";
 import { ChampionItemLine } from "./champion-item-line";
-import { Filter } from "./filter";
+import { ChampionFilter } from "./filter";
 import { Sort } from "./sort";
 import { Props } from "./champions.props";
 
@@ -80,7 +80,7 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
 
   return (
     <>
-      <Filter />
+      <ChampionFilter />
       <div className="flex items-center justify-between">
         <Sort />
         <Display />

@@ -42,3 +42,8 @@ export type TLolItemShort = {
   gold: number;
   tags: string[];
 };
+
+export type TLolItemTree = {
+  header: string;
+  tags: string[];
+};

@@ -5,6 +5,7 @@ import {
   TResLolChampionShort,
   TLolItem,
   TLolItemShort,
+  TLolItemTree,
 } from "@types";
 
 class LolDataService {
@@ -56,23 +57,28 @@ class LolDataService {
     }
   };
 
-  fetchItems = async (): Promise<TLolItemShort[]> => {
+  fetchItems = async (): Promise<{
+    data: TLolItemShort[];
+    tree: TLolItemTree[];
+  }> => {
     try {
       const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
 
       const resItems: TLolItem[] = Object.values(res.data.data);
 
-      const items: TLolItemShort[] = resItems.map((item) => ({
+      const data: TLolItemShort[] = resItems.map((item) => ({
         name: item.name,
         image: item.image.full,
         gold: item.gold.total,
         tags: item.tags,
       }));
 
-      return items;
+      const tree: TLolItemTree[] = res.data.tree;
+
+      return { data, tree };
     } catch (err) {
       console.error(err);
-      return [];
+      return { data: [], tree: [] };
     }
   };
 }
