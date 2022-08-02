@@ -1,27 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@store";
 
-export type TFilterState = {
-  value: string;
+export type TChampionsFilterState = {
+  search: string;
 };
 
-const initialState: TFilterState = {
-  value: "",
+const initialState: TChampionsFilterState = {
+  search: "",
 };
 
-export const filterSlice = createSlice({
-  name: "lol/champions/display",
+export const championsFilterSlice = createSlice({
+  name: "lol/champions/filter",
   initialState,
   reducers: {
-    setFilterValue: (state, action: PayloadAction<string>) => {
-      state.value = action.payload;
+    setChampionsFilterSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
     },
   },
 });
 
-export const { setFilterValue } = filterSlice.actions;
+export const { setChampionsFilterSearch } = championsFilterSlice.actions;
 
-export const selectFilterValue = (state: RootState) =>
-  state.lolChampionFilter.value;
+export const selectChampionsFilterSearch = (state: RootState) =>
+  state.lolChampionFilter.search;
 
-export const lolChampionFilterReducer = filterSlice.reducer;
+export const lolChampionFilterReducer = championsFilterSlice.reducer;

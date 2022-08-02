@@ -4,7 +4,7 @@ import { useAppSelector } from "@hooks";
 import { Display } from "@components";
 import {
   selectDisplayValue,
-  selectFilterValue,
+  selectChampionsFilterSearch,
   selectSortAsc,
   selectSortValue,
 } from "@store";
@@ -17,7 +17,7 @@ import { Sort } from "./sort";
 import { Props } from "./champions.props";
 
 export const Champions = ({ champions, ...props }: Props): JSX.Element => {
-  const filterValue = useAppSelector(selectFilterValue);
+  const filterSearch = useAppSelector(selectChampionsFilterSearch);
   const sortAsc = useAppSelector(selectSortAsc);
   const sortValue = useAppSelector(selectSortValue);
   const displayValue = useAppSelector(selectDisplayValue);
@@ -39,15 +39,15 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
   const filterChampions = () => {
     let filteredChampions = champions;
 
-    if (filterValue) {
+    if (filterSearch) {
       filteredChampions = champions.filter((champ) => {
         const champRu = champ.name
           .toLocaleLowerCase()
-          .includes(filterValue.toLocaleLowerCase());
+          .includes(filterSearch.toLocaleLowerCase());
 
         const champEng = champ.id
           .toLocaleLowerCase()
-          .includes(filterValue.toLocaleLowerCase());
+          .includes(filterSearch.toLocaleLowerCase());
 
         return champRu || champEng;
       });

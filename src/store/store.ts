@@ -3,6 +3,7 @@ import {
   lolDisplayReducer,
   lolChampionFilterReducer,
   lolChampionSortReducer,
+  lolItemsFilterReducer,
 } from "./lol";
 
 export function makeStore() {
@@ -11,6 +12,7 @@ export function makeStore() {
       lolDisplay: lolDisplayReducer,
       lolChampionFilter: lolChampionFilterReducer,
       lolChampionSort: lolChampionSortReducer,
+      lolItemsFilter: lolItemsFilterReducer,
     },
     devTools: true,
   });
