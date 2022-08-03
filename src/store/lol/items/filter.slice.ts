@@ -3,10 +3,12 @@ import { RootState } from "@store";
 
 export type TItemsFilterState = {
   search: string;
+  tags: string[];
 };
 
 const initialState: TItemsFilterState = {
   search: "",
+  tags: [],
 };
 
 export const itemsFilterSlice = createSlice({

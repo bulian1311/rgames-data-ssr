@@ -41,6 +41,7 @@ export type TLolItemShort = {
   image: string;
   gold: number;
   tags: string[];
+  colloq: string;
 };
 
 export type TLolItemTree = {

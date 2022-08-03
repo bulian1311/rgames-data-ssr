@@ -71,6 +71,7 @@ class LolDataService {
         image: item.image.full,
         gold: item.gold.total,
         tags: item.tags,
+        colloq: item.colloq,
       }));
 
       const tree: TLolItemTree[] = res.data.tree;

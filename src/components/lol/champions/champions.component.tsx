@@ -86,7 +86,7 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
         <Display />
       </div>
       <div
-        className={clsx("flex flex-wrap gap-2", {
+        className={clsx("flex flex-wrap gap-2 justify-center", {
           "flex-col": displayValue === "lines",
         })}
         {...props}

@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useAppSelector } from "@hooks";
-import { selectDisplayValue } from "@store";
+import { selectDisplayValue, selectItemsFilterSearch } from "@store";
 import { Display } from "@components";
 import { ItemsFilter } from "./filter";
 import { ItemLine } from "./item-line";
@@ -11,6 +11,7 @@ import { Props } from "./items.props";
 
 export const Items = ({ items, ...props }: Props): JSX.Element => {
   const displayValue = useAppSelector(selectDisplayValue);
+  const itemSearch = useAppSelector(selectItemsFilterSearch);
   let Item = ItemLarge;
 
   switch (displayValue) {
@@ -25,8 +26,30 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
       break;
   }
 
+  const filterItems = () => {
+    let filteredItems = items.data;
+
+    if (itemSearch) {
+      filteredItems = items.data.filter((item) => {
+        const itemRu = item.name
+          .toLocaleLowerCase()
+          .includes(itemSearch.toLocaleLowerCase());
+
+        const itemEn = item.colloq
+          .toLocaleLowerCase()
+          .includes(itemSearch.toLocaleLowerCase());
+
+        return itemRu || itemEn;
+      });
+    }
+
+    return filteredItems;
+  };
+
   const renderItems = () => {
-    return items.data.map((item) => <Item key={item.image} item={item} />);
+    const filteredItems = filterItems();
+
+    return filteredItems.map((item) => <Item key={item.image} item={item} />);
   };
 
   return (
