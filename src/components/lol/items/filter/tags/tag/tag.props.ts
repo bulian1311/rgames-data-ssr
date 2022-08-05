@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
 
 export type Props = HTMLAttributes<HTMLSpanElement> & {
-  name: string;
+  tag: string;
 };

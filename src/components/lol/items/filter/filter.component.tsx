@@ -5,13 +5,13 @@ import { Props } from "./filter.props";
 
 export const ItemsFilter = ({ tree, ...props }: Props): JSX.Element => {
   const renderTags = () => {
-    return tree.map((t) => <ItemsTags className="flex-1" tree={t} />);
+    return tree.map((t) => <ItemsTags key={t.header} tree={t} />);
   };
 
   return (
     <div className="flex flex-col" {...props}>
       <ItemsSearch />
-      <div className="flex">{renderTags()}</div>
+      <div className="flex gap-2">{renderTags()}</div>
     </div>
   );
 };
