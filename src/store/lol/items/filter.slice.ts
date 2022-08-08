@@ -37,4 +37,7 @@ export const { setItemsFilterSearch, setItemsFilterTag } =
 export const selectItemsFilterSearch = (state: RootState) =>
   state.lolItemsFilter.search;
 
+export const selectItemsFilterTags = (state: RootState) =>
+  state.lolItemsFilter.tags;
+
 export const lolItemsFilterReducer = itemsFilterSlice.reducer;

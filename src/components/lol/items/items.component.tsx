@@ -1,7 +1,11 @@
 import React from "react";
 import clsx from "clsx";
 import { useAppSelector } from "@hooks";
-import { selectDisplayValue, selectItemsFilterSearch } from "@store";
+import {
+  selectDisplayValue,
+  selectItemsFilterSearch,
+  selectItemsFilterTags,
+} from "@store";
 import { Display } from "@components";
 import { ItemsFilter } from "./filter";
 import { ItemLine } from "./item-line";
@@ -12,7 +16,8 @@ import { Props } from "./items.props";
 export const Items = ({ items, ...props }: Props): JSX.Element => {
   const displayValue = useAppSelector(selectDisplayValue);
   const itemSearch = useAppSelector(selectItemsFilterSearch);
-  let Item = ItemLarge;
+  const itemTags = useAppSelector(selectItemsFilterTags);
+  let Item: ({ item }: any) => JSX.Element = ItemLarge;
 
   switch (displayValue) {
     case "lines":
@@ -30,7 +35,7 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
     let filteredItems = items.data;
 
     if (itemSearch) {
-      filteredItems = items.data.filter((item) => {
+      filteredItems = filteredItems.filter((item) => {
         const itemRu = item.name
           .toLocaleLowerCase()
           .includes(itemSearch.toLocaleLowerCase());
@@ -40,6 +45,16 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
           .includes(itemSearch.toLocaleLowerCase());
 
         return itemRu || itemEn;
+      });
+    }
+
+    if (itemTags.length > 0) {
+      filteredItems = filteredItems.filter((item) => {
+        let includeTag = item.tags.some((tag) =>
+          itemTags.includes(tag.toUpperCase())
+        );
+
+        return includeTag;
       });
     }
 

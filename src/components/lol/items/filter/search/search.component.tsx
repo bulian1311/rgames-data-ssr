@@ -10,7 +10,6 @@ export const ItemsSearch = ({ ...props }: Props): JSX.Element => {
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value;
-    console.log("qqqqq - ", newValue);
     dispatch(setItemsFilterSearch(newValue));
   };
 

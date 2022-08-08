@@ -24,7 +24,7 @@ export enum tagMatching {
   BOOTS = "Ботинки",
   NONBOOTSMOVEMENT = "Без ботинок",
 
-  ACTIVE = "Акутив",
+  ACTIVE = "Активный",
   MAGICPENETRATION = "Пробивание магии",
   ARMORPENETRATION = "Пробивание брони",
   AURA = "Аура",
