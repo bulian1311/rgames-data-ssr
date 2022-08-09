@@ -66,15 +66,31 @@ class LolDataService {
 
       const resItems: TLolItem[] = Object.values(res.data.data);
 
-      const data: TLolItemShort[] = resItems.map((item) => ({
+      const shortData: TLolItemShort[] = resItems.map((item) => ({
         name: item.name,
         image: item.image.full,
         gold: item.gold.total,
-        tags: item.tags,
+        tags: item.tags.map((t) => t.toUpperCase()),
         colloq: item.colloq,
       }));
 
+      const data = shortData.filter((item) => {
+        const exclude =
+          item.name !== "Золотая лопатка" &&
+          item.name !== "Награда за строение" &&
+          item.name !== "Заглушка для Гангпланка" &&
+          !item.name.includes("500 серебряных змей");
+
+        return exclude;
+      });
+
       const tree: TLolItemTree[] = res.data.tree;
+
+      tree.forEach((t) => {
+        if (t.header === "MAGIC") {
+          t.tags.push("ABILITYHASTE");
+        }
+      });
 
       return { data, tree };
     } catch (err) {

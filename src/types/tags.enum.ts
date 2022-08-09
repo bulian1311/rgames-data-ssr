@@ -20,9 +20,10 @@ export enum tagMatching {
   SPELLDAMAGE = "Урон умениями",
   COOLDOWNREDUCTION = "Ускорение умений",
   MANAREGEN = "Восстановление маны",
+  ABILITYHASTE = "Ускорение умений",
 
   BOOTS = "Ботинки",
-  NONBOOTSMOVEMENT = "Без ботинок",
+  NONBOOTSMOVEMENT = "Ускорение",
 
   ACTIVE = "Активный",
   MAGICPENETRATION = "Пробивание магии",
@@ -65,4 +66,24 @@ export type TTagMatching =
   | "SLOW"
   | "STEALTH"
   | "SPELLVAMP"
-  | "TENACITY";
+  | "TENACITY"
+  | "ABILITYHASTE";
+
+export enum headerMatching {
+  START = "Старт",
+  TOOLS = "Вспомогательное",
+  DEFENSE = "Защита",
+  ATTACK = "Атака",
+  MAGIC = "Магия",
+  MOVEMENT = "Передвижение",
+  UNCATEGORIZED = "Без категории",
+}
+
+export type THeaderMatching =
+  | "START"
+  | "TOOLS"
+  | "DEFENSE"
+  | "ATTACK"
+  | "MAGIC"
+  | "MOVEMENT"
+  | "UNCATEGORIZED";

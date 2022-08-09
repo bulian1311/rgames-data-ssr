@@ -50,9 +50,7 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
 
     if (itemTags.length > 0) {
       filteredItems = filteredItems.filter((item) => {
-        let includeTag = item.tags.some((tag) =>
-          itemTags.includes(tag.toUpperCase())
-        );
+        let includeTag = itemTags.every((tag) => item.tags.includes(tag));
 
         return includeTag;
       });
@@ -73,9 +71,16 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
       <div className="flex items-center justify-end">
         <Display />
       </div>
+      {displayValue === "lines" && (
+        <div className="flex justify-between items-center">
+          <span>Предмет</span>
+          <span>Цена</span>
+        </div>
+      )}
       <div
-        className={clsx("flex flex-wrap gap-2", {
+        className={clsx("flex gap-2", {
           "flex-col": displayValue === "lines",
+          "flex-wrap": displayValue !== "lines",
         })}
         {...props}
       >

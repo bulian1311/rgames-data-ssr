@@ -1,7 +1,7 @@
 import React from "react";
 import { Headline } from "@components";
 import { ItemTag } from "./tag";
-import { THeaderMatching, headerMatching } from "./header.enum";
+import { THeaderMatching, headerMatching } from "@types";
 import { Props } from "./tags.props";
 
 export const ItemsTags = ({ tree, ...props }: Props): JSX.Element => {

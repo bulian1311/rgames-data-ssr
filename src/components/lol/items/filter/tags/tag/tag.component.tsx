@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { useAppDispatch } from "@hooks";
 import { setItemsFilterTag } from "@store";
-import { TTagMatching, tagMatching } from "./tag.enum";
+import { TTagMatching, tagMatching } from "@types";
 import { Props } from "./tag.props";
 
 export const ItemTag = ({ tag, ...props }: Props): JSX.Element => {

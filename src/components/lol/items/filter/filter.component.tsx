@@ -11,7 +11,7 @@ export const ItemsFilter = ({ tree, ...props }: Props): JSX.Element => {
   return (
     <div className="flex flex-col" {...props}>
       <ItemsSearch />
-      <div className="flex gap-2">{renderTags()}</div>
+      <div className="flex gap-2 flex-wrap">{renderTags()}</div>
     </div>
   );
 };
