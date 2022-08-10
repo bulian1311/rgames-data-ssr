@@ -86,11 +86,11 @@ class LolDataService {
 
       const tree: TLolItemTree[] = res.data.tree;
 
-      tree.forEach((t) => {
-        if (t.header === "MAGIC") {
-          t.tags.push("ABILITYHASTE");
-        }
-      });
+      // tree.forEach((t) => {
+      //   if (t.header === "MAGIC") {
+      //     t.tags.push("ABILITYHASTE");
+      //   }
+      // });
 
       return { data, tree };
     } catch (err) {

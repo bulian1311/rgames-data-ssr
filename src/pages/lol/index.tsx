@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Block, Headline, Sidebar } from "@components";
+import { Block, Headline, Sidebar, LolLayout } from "@components";
 import { TLolChampionShort } from "@types";
 
 type TProps = {
@@ -8,12 +8,9 @@ type TProps = {
 
 const LolPage: NextPage<TProps> = ({ champions }) => {
   return (
-    <div className="flex space-x-8">
-      <Sidebar />
-      <Block className="grow flex">
-        <Headline tag="h2">Новости</Headline>
-      </Block>
-    </div>
+    <LolLayout>
+      <Headline tag="h2">Новости</Headline>
+    </LolLayout>
   );
 };
 

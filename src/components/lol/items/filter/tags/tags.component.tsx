@@ -18,7 +18,7 @@ export const ItemsTags = ({ tree, ...props }: Props): JSX.Element => {
   };
 
   return (
-    <div className="bg-slate-800 flex-1 rounded-sm mt-4" {...props}>
+    <div className="bg-slate-800 flex-1 rounded-md mt-4" {...props}>
       <Headline tag="h4" className="uppercase text-sm mx-2 my-1 cursor-default">
         {headerMatching[header]}
       </Headline>

@@ -18,7 +18,7 @@ export const Layout = ({ children }: Props): JSX.Element => {
       </div>
 
       <Navbar />
-      <main className="container pt-20 mx-auto md:pt-32">{children}</main>
+      <main className="container pt-20 mx-auto md:pt-32 mb-20">{children}</main>
       <Footer />
     </>
   );

@@ -20,7 +20,7 @@ export enum tagMatching {
   SPELLDAMAGE = "Урон умениями",
   COOLDOWNREDUCTION = "Ускорение умений",
   MANAREGEN = "Восстановление маны",
-  ABILITYHASTE = "Ускорение умений",
+  //ABILITYHASTE = "Ускорение умений",
 
   BOOTS = "Ботинки",
   NONBOOTSMOVEMENT = "Ускорение",
@@ -66,8 +66,8 @@ export type TTagMatching =
   | "SLOW"
   | "STEALTH"
   | "SPELLVAMP"
-  | "TENACITY"
-  | "ABILITYHASTE";
+  | "TENACITY";
+//| "ABILITYHASTE";
 
 export enum headerMatching {
   START = "Старт",

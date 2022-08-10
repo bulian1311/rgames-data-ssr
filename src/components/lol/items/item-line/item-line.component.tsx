@@ -7,6 +7,8 @@ export const ItemLine = ({ item, ...props }: Props): JSX.Element => {
   const renderTags = () => {
     return item.tags.map((tag) => {
       const matchTag: TTagMatching = tag as TTagMatching;
+      if (tag === "ABILITYHASTE") return;
+
       return (
         <div key={tag} className="bg-slate-900 px-2 py-1 rounded-md">
           {tagMatching[matchTag]}
@@ -14,9 +16,14 @@ export const ItemLine = ({ item, ...props }: Props): JSX.Element => {
       );
     });
   };
+
   return (
-    <div className="flex items-center bg-slate-800 px-1 py-1" {...props}>
+    <div
+      className="flex items-center bg-slate-800 px-1 py-1 rounded-md"
+      {...props}
+    >
       <Image
+        className="rounded-md"
         width={66}
         height={66}
         src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image}`}

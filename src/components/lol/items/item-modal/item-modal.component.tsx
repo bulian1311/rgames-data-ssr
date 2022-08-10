@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
-import clsx from "clsx";
+import React from "react";
+import Image from "next/image";
 import { Props } from "./item-modal.props";
 
-export const ItemModal = ({ x, y, hidden, ...props }: Props): JSX.Element => {
+export const ItemModal = ({ item, ...props }: Props): JSX.Element => {
   return (
-    <div
-      style={{ top: y, left: x }}
-      className={clsx(
-        "w-60 h-60 absolute bg-slate-100 z-50",
-
-        {
-          hidden: hidden,
-        }
-      )}
-      {...props}
-    >
-      ItemModal
+    <div className="flex gap-2" {...props}>
+      <Image
+        width={80}
+        height={80}
+        src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image}`}
+      />
+      <span>{item.name}</span>
     </div>
   );
 };
