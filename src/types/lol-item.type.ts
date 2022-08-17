@@ -1,4 +1,4 @@
-export type TLolItem = {
+export type TResLolItem = {
   name: string;
   description: string;
   colloq: string;
@@ -36,15 +36,7 @@ export type TLolItem = {
   };
 };
 
-export type TLolItemShort = {
-  name: string;
-  image: string;
-  gold: number;
-  tags: string[];
-  colloq: string;
-};
-
-export type TLolItemTree = {
+export type TResLolItemTree = {
   header: string;
   tags: string[];
 };

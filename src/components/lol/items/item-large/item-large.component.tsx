@@ -12,7 +12,7 @@ export const ItemLarge = ({ item, ...props }: Props): JSX.Element => {
           className="rounded-md"
           width={80}
           height={80}
-          src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image}`}
+          src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image.full}`}
         />
       </div>
     </Modal>

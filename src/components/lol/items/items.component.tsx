@@ -18,6 +18,7 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
   const itemSearch = useAppSelector(selectItemsFilterSearch);
   const itemTags = useAppSelector(selectItemsFilterTags);
   let Item: ({ item }: any) => JSX.Element = ItemLarge;
+  let itemsArray = Object.values(items.data);
 
   switch (displayValue) {
     case "lines":
@@ -32,7 +33,8 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
   }
 
   const filterItems = () => {
-    let filteredItems = items.data;
+    //let filteredItems = items.data;
+    let filteredItems = itemsArray;
 
     if (itemSearch) {
       filteredItems = filteredItems.filter((item) => {
@@ -62,7 +64,7 @@ export const Items = ({ items, ...props }: Props): JSX.Element => {
   const renderItems = () => {
     const filteredItems = filterItems();
 
-    return filteredItems.map((item) => <Item key={item.image} item={item} />);
+    return filteredItems.map((item) => <Item key={item.name} item={item} />);
   };
 
   return (

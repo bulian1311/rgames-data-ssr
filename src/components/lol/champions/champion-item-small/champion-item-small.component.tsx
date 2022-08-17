@@ -12,6 +12,7 @@ export const ChampionItemSmall = ({
       <Link href={`/lol/champion/${champion.id}`}>
         <a>
           <Image
+            priority
             src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${champion.image}`}
             width={96}
             height={96}

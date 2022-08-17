@@ -1,44 +1,46 @@
 import { client, VERSION, LANG } from "./client";
 import {
-  TLolChampionShort,
-  TResLolChampionFull,
   TResLolChampionShort,
-  TLolItem,
-  TLolItemShort,
-  TLolItemTree,
+  TResLolChampionFull,
+  TResLolItem,
+  TResLolItemTree,
 } from "@types";
 
 class LolDataService {
-  fetctChampions = async (): Promise<TLolChampionShort[]> => {
+  fetctChampions = async (): Promise<{
+    [id: string]: TResLolChampionShort;
+  }> => {
     try {
       const res = await client.get(
         `/cdn/${VERSION}/data/${LANG}/champion.json`
       );
 
-      const resChampions: TResLolChampionShort[] = Object.values(res.data.data);
+      //const champions: TResLolChampionShort[] = Object.values(res.data.data);
 
-      const champions: TLolChampionShort[] = resChampions.map((champ) => {
-        const champion = {
-          version: champ.version,
-          id: champ.id,
-          key: champ.key,
-          name: champ.name,
-          title: champ.title,
-          image: champ.id + "_0.jpg",
-          tags: champ.tags,
-        };
+      const champions: { [id: string]: TResLolChampionShort } = res.data.data;
 
-        if (champion.id === "Fiddlesticks") {
-          champion.image = "FiddleSticks_0.jpg";
-        }
+      // const champions: TLolChampionShort[] = resChampions.map((champ) => {
+      //   const champion = {
+      //     version: champ.version,
+      //     id: champ.id,
+      //     key: champ.key,
+      //     name: champ.name,
+      //     title: champ.title,
+      //     image: champ.id + "_0.jpg",
+      //     tags: champ.tags,
+      //   };
 
-        return champion;
-      });
+      //   if (champion.id === "Fiddlesticks") {
+      //     champion.image = "FiddleSticks_0.jpg";
+      //   }
+
+      //   return champion;
+      // });
 
       return champions;
     } catch (err) {
       console.error(err);
-      return [];
+      return {};
     }
   };
 
@@ -58,44 +60,40 @@ class LolDataService {
   };
 
   fetchItems = async (): Promise<{
-    data: TLolItemShort[];
-    tree: TLolItemTree[];
+    data: { [id: string]: TResLolItem };
+    tree: TResLolItemTree[];
   }> => {
     try {
       const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
 
-      const resItems: TLolItem[] = Object.values(res.data.data);
+      // const resItems: TLolItem[] = Object.values(res.data.data);
 
-      const shortData: TLolItemShort[] = resItems.map((item) => ({
-        name: item.name,
-        image: item.image.full,
-        gold: item.gold.total,
-        tags: item.tags.map((t) => t.toUpperCase()),
-        colloq: item.colloq,
-      }));
+      // const shortData: TLolItemShort[] = resItems.map((item) => ({
+      //   name: item.name,
+      //   image: item.image.full,
+      //   gold: item.gold.total,
+      //   tags: item.tags.map((t) => t.toUpperCase()),
+      //   colloq: item.colloq,
+      // }));
 
-      const data = shortData.filter((item) => {
-        const exclude =
-          item.name !== "Золотая лопатка" &&
-          item.name !== "Награда за строение" &&
-          item.name !== "Заглушка для Гангпланка" &&
-          !item.name.includes("500 серебряных змей");
+      // const data = shortData.filter((item) => {
+      //   const exclude =
+      //     item.name !== "Золотая лопатка" &&
+      //     item.name !== "Награда за строение" &&
+      //     item.name !== "Заглушка для Гангпланка" &&
+      //     !item.name.includes("500 серебряных змей");
 
-        return exclude;
-      });
-
-      const tree: TLolItemTree[] = res.data.tree;
-
-      // tree.forEach((t) => {
-      //   if (t.header === "MAGIC") {
-      //     t.tags.push("ABILITYHASTE");
-      //   }
+      //   return exclude;
       // });
+
+      const data: { [id: string]: TResLolItem } = res.data.data;
+
+      const tree: TResLolItemTree[] = res.data.tree;
 
       return { data, tree };
     } catch (err) {
       console.error(err);
-      return { data: [], tree: [] };
+      return { data: {}, tree: [] };
     }
   };
 }
