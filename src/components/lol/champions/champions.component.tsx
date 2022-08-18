@@ -1,14 +1,9 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import clsx from "clsx";
 import { useAppSelector } from "@hooks";
 import { Display } from "@components";
-import {
-  selectDisplayValue,
-  selectChampionsFilterSearch,
-  selectSortAsc,
-  selectSortValue,
-} from "@store";
-import { TLolChampionShort } from "@types";
+import { selectDisplayValue, selectChampions } from "@store";
+
 import { ChampionItemSmall } from "./champion-item-small";
 import { ChampionItemLarge } from "./champion-item-large";
 import { ChampionItemLine } from "./champion-item-line";
@@ -16,10 +11,8 @@ import { ChampionFilter } from "./filter";
 import { Sort } from "./sort";
 import { Props } from "./champions.props";
 
-export const Champions = ({ champions, ...props }: Props): JSX.Element => {
-  const filterSearch = useAppSelector(selectChampionsFilterSearch);
-  const sortAsc = useAppSelector(selectSortAsc);
-  const sortValue = useAppSelector(selectSortValue);
+export const Champions = ({ ...props }: Props): JSX.Element => {
+  const champions = useAppSelector(selectChampions);
   const displayValue = useAppSelector(selectDisplayValue);
 
   let ChampionItem = ChampionItemSmall;
@@ -36,46 +29,10 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
       break;
   }
 
-  const filterChampions = () => {
-    let filteredChampions = champions;
-
-    if (filterSearch) {
-      filteredChampions = champions.filter((champ) => {
-        const champRu = champ.name
-          .toLocaleLowerCase()
-          .includes(filterSearch.toLocaleLowerCase());
-
-        const champEng = champ.id
-          .toLocaleLowerCase()
-          .includes(filterSearch.toLocaleLowerCase());
-
-        return champRu || champEng;
-      });
-    }
-
-    return filteredChampions;
-  };
-
-  const sortChampions = (champs: TLolChampionShort[]) => {
-    let reversedList: TLolChampionShort[] = champs;
-
-    if (!sortAsc && sortValue === "name") {
-      reversedList = champs.slice().reverse();
-    }
-
-    return reversedList;
-  };
-
   const renderChampions = () => {
-    let championItems: ReactNode = [];
-    let filteredChampions = filterChampions();
-    filteredChampions = sortChampions(filteredChampions);
-
-    championItems = filteredChampions.map((champ) => (
+    return champions.map((champ) => (
       <ChampionItem key={champ.key} champion={champ} />
     ));
-
-    return championItems;
   };
 
   return (

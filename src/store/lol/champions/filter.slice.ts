@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import { RootState } from "@store";
 
 export type TChampionsFilterState = {
@@ -21,7 +21,11 @@ export const championsFilterSlice = createSlice({
 
 export const { setChampionsFilterSearch } = championsFilterSlice.actions;
 
-export const selectChampionsFilterSearch = (state: RootState) =>
-  state.lolChampionFilter.search;
+const selectState = (state: RootState) => state.lolChampionFilter;
+
+export const selectChampionsFilterSearch = createSelector(
+  selectState,
+  (state) => state.search
+);
 
 export const lolChampionFilterReducer = championsFilterSlice.reducer;

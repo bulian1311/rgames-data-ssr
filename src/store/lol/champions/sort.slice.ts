@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import { RootState } from "@store";
 
 export type TSortValue = "name" | "ban";
@@ -28,8 +28,13 @@ export const sortSlice = createSlice({
 
 export const { setSortAsc, setSortValue } = sortSlice.actions;
 
-export const selectSortValue = (state: RootState) =>
-  state.lolChampionSort.value;
-export const selectSortAsc = (state: RootState) => state.lolChampionSort.asc;
+const selectState = (state: RootState) => state.lolChampionSort;
+
+export const selectSortValue = createSelector(
+  selectState,
+  (state) => state.value
+);
+
+export const selectSortAsc = createSelector(selectState, (state) => state.asc);
 
 export const lolChampionSortReducer = sortSlice.reducer;

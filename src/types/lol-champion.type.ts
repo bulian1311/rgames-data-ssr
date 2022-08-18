@@ -93,6 +93,13 @@ export type TResLolChampionShort = {
   stats: TStats;
 };
 
+export type TLolChampionItem = {
+  id: string;
+  key: string;
+  name: string;
+  image: string;
+};
+
 export type TResLolChampionFull = {
   id: string;
   key: string;

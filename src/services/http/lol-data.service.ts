@@ -2,45 +2,44 @@ import { client, VERSION, LANG } from "./client";
 import {
   TResLolChampionShort,
   TResLolChampionFull,
+  TLolChampionItem,
   TResLolItem,
   TResLolItemTree,
 } from "@types";
 
 class LolDataService {
   fetctChampions = async (): Promise<{
-    [id: string]: TResLolChampionShort;
+    champions: { [id: string]: TResLolChampionShort };
+    championsArray: TLolChampionItem[];
   }> => {
     try {
       const res = await client.get(
         `/cdn/${VERSION}/data/${LANG}/champion.json`
       );
 
-      //const champions: TResLolChampionShort[] = Object.values(res.data.data);
-
       const champions: { [id: string]: TResLolChampionShort } = res.data.data;
 
-      // const champions: TLolChampionShort[] = resChampions.map((champ) => {
-      //   const champion = {
-      //     version: champ.version,
-      //     id: champ.id,
-      //     key: champ.key,
-      //     name: champ.name,
-      //     title: champ.title,
-      //     image: champ.id + "_0.jpg",
-      //     tags: champ.tags,
-      //   };
+      const array: TResLolChampionShort[] = Object.values(res.data.data);
 
-      //   if (champion.id === "Fiddlesticks") {
-      //     champion.image = "FiddleSticks_0.jpg";
-      //   }
+      const championsArray = array.map((champ) => {
+        const champion = {
+          id: champ.id,
+          key: champ.key,
+          name: champ.name,
+          image: champ.id + "_0.jpg",
+        };
 
-      //   return champion;
-      // });
+        if (champion.id === "Fiddlesticks") {
+          champion.image = "FiddleSticks_0.jpg";
+        }
 
-      return champions;
+        return champion;
+      });
+
+      return { champions, championsArray };
     } catch (err) {
       console.error(err);
-      return {};
+      return { champions: {}, championsArray: [] };
     }
   };
 
@@ -65,8 +64,6 @@ class LolDataService {
   }> => {
     try {
       const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
-
-      // const resItems: TLolItem[] = Object.values(res.data.data);
 
       // const shortData: TLolItemShort[] = resItems.map((item) => ({
       //   name: item.name,

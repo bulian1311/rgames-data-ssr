@@ -1,12 +1,7 @@
 import type { NextPage } from "next";
-import { Block, Headline, Sidebar, LolLayout } from "@components";
-import { TLolChampionShort } from "@types";
+import { Headline, LolLayout } from "@components";
 
-type TProps = {
-  champions: TLolChampionShort[];
-};
-
-const LolPage: NextPage<TProps> = ({ champions }) => {
+const LolPage: NextPage = () => {
   return (
     <LolLayout>
       <Headline tag="h2">Новости</Headline>

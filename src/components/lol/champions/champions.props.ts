@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
-import { TLolChampionShort } from "@types";
+//import { TLolChampionShort } from "@types";
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  champions: TLolChampionShort[];
+  //champions: TLolChampionShort[];
 };

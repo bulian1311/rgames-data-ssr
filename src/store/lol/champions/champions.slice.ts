@@ -1,7 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "@store";
 import { lolDataService } from "@services";
-import { TResLolChampionShort, ValidationErrors } from "@types";
+import {
+  TResLolChampionShort,
+  ValidationErrors,
+  TLolChampionItem,
+} from "@types";
 
 export const fetchLolChampions = createAsyncThunk(
   "lol/fetchChampions",
@@ -17,12 +20,14 @@ export const fetchLolChampions = createAsyncThunk(
 
 export type TChampionsState = {
   champions: { [id: string]: TResLolChampionShort };
+  championsArray: TLolChampionItem[];
   status: "resolve" | "reject" | "pending" | null;
   errors: string[];
 };
 
 const initialState: TChampionsState = {
   champions: {},
+  championsArray: [],
   status: null,
   errors: [],
 };
@@ -45,7 +50,8 @@ export const championsSlice = createSlice({
 
     builder.addCase(fetchLolChampions.fulfilled, (state, { payload }) => {
       state.status = "resolve";
-      state.champions = payload;
+      state.champions = payload.champions;
+      state.championsArray = payload.championsArray;
     });
 
     builder.addCase(fetchLolChampions.rejected, (state, { payload }) => {
@@ -57,8 +63,5 @@ export const championsSlice = createSlice({
 });
 
 export const { setChampions } = championsSlice.actions;
-
-export const selectChampions = (state: RootState) =>
-  state.lolChampions.champions;
 
 export const lolChampionsReducer = championsSlice.reducer;
