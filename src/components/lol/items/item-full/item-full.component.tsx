@@ -1,15 +1,17 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppSelector } from '@hooks';
-import { selectItemById } from '@store';
-import { Headline } from '@components';
-import { ItemInto } from './item-into';
-import { TreeDiagram } from '../tree-diagram';
-import { Props } from './item-full.props';
+import React from "react";
+import { useRouter } from "next/router";
+import { useAppSelector } from "@hooks";
+import { selectItemById } from "@store";
+import { Headline } from "@components";
+import { ItemInto } from "./item-into";
+import { TreeDiagram } from "../tree-diagram";
+import { Props } from "./item-full.props";
 
 export const ItemFull = ({ ...props }: Props): JSX.Element => {
-  const params = useParams();
-  const item = useAppSelector(selectItemById(params.itemId as string));
+  const router = useRouter();
+  const itemId = router.query.itemId;
+
+  const item = useAppSelector(selectItemById(itemId as string));
 
   if (!item) return <div>Loading...</div>;
 
@@ -47,7 +49,7 @@ export const ItemFull = ({ ...props }: Props): JSX.Element => {
           )}
         </div>
 
-        {item.from && <TreeDiagram itemId={params.itemId as string} />}
+        {item.from && <TreeDiagram itemId={itemId as string} />}
       </div>
     </div>
   );

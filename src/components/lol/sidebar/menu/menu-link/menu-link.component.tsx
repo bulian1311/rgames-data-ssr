@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import clsx from 'clsx';
-import { Props } from './menu-link.props';
+import React from "react";
+import { NavLink } from "@components";
+import clsx from "clsx";
+import { Props } from "./menu-link.props";
 
 export const MenuLink = ({
   to,
@@ -11,15 +11,11 @@ export const MenuLink = ({
 }: Props): JSX.Element => {
   return (
     <NavLink
-      to={to}
+      href={to}
+      className="p-4 hover:bg-slate-800 rounded-md text-slate-200"
+      activeClassName="bg-slate-800"
+      name={name}
       {...props}
-      className={({ isActive }) =>
-        clsx('p-4 hover:bg-slate-800 rounded-md text-slate-200', {
-          'bg-slate-800': isActive,
-        })
-      }
-    >
-      {name}
-    </NavLink>
+    />
   );
 };

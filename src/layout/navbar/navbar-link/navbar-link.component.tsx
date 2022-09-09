@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
-import { Props } from './navbar-link.props';
+import React, { useState } from "react";
+import clsx from "clsx";
+import { NavLink } from "@components";
+import { Props } from "./navbar-link.props";
 
 export const NavbarLink = ({ link, ...props }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -9,18 +9,11 @@ export const NavbarLink = ({ link, ...props }: Props): JSX.Element => {
   return (
     <li onClick={() => setIsOpen(!isOpen)} {...props}>
       <NavLink
-        to={link.to}
-        className={({ isActive }) =>
-          clsx(
-            'py-4 px-6 hover:bg-slate-800 inline-block w-full md:w-auto text-slate-200',
-            {
-              'bg-slate-800': isActive,
-            }
-          )
-        }
-      >
-        {link.name}
-      </NavLink>
+        href={link.to}
+        className="py-4 px-6 hover:bg-slate-800 inline-block w-full md:w-auto text-slate-200"
+        activeClassName="bg-slate-800"
+        name={link.name}
+      />
     </li>
   );
 };

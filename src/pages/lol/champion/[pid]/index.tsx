@@ -51,7 +51,7 @@ const ChampionPage: NextPage<TProps> = ({ champion }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const champions = await lolDataService.fetctChampions();
 
-  const paths = champions.map((champ) => ({
+  const paths = champions.championsArray.map((champ) => ({
     params: { pid: champ.id },
   }));
 
