@@ -1,13 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { lolDataService } from "@services";
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { lolDataService } from '@services';
 import {
   TResLolChampionShort,
   ValidationErrors,
   TLolChampionItem,
-} from "@types";
+} from '@types';
 
 export const fetchLolChampions = createAsyncThunk(
-  "lol/fetchChampions",
+  'lol/fetchChampions',
   async (_, { rejectWithValue }) => {
     try {
       const champions = await lolDataService.fetctChampions();
@@ -21,7 +21,7 @@ export const fetchLolChampions = createAsyncThunk(
 export type TChampionsState = {
   champions: { [id: string]: TResLolChampionShort };
   championsArray: TLolChampionItem[];
-  status: "resolve" | "reject" | "pending" | null;
+  status: 'resolve' | 'reject' | 'pending' | null;
   errors: string[];
 };
 
@@ -33,7 +33,7 @@ const initialState: TChampionsState = {
 };
 
 export const championsSlice = createSlice({
-  name: "lol/champions",
+  name: 'lol/champions',
   initialState,
   reducers: {
     setChampions: (
@@ -45,18 +45,19 @@ export const championsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLolChampions.pending, (state) => {
-      state.status = "pending";
+      state.status = 'pending';
     });
 
     builder.addCase(fetchLolChampions.fulfilled, (state, { payload }) => {
-      state.status = "resolve";
+      state.status = 'resolve';
       state.champions = payload.champions;
       state.championsArray = payload.championsArray;
     });
 
     builder.addCase(fetchLolChampions.rejected, (state, { payload }) => {
-      state.status = "reject";
+      state.status = 'reject';
       const error = payload as ValidationErrors;
+
       state.errors.push(error.errorMessage);
     });
   },

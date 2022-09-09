@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "react";
-import { TSubLink } from "@types";
+import { HTMLAttributes } from 'react';
+import { TSubLink } from '@types';
 
 export type Props = HTMLAttributes<HTMLElement> & {
   sublinks: TSubLink[];

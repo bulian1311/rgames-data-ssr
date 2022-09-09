@@ -1,8 +1,8 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "@store";
-import { TLolChampionItem } from "@types";
-import { selectChampionsFilterSearch } from "./filter.slice";
-import { selectSortAsc, selectSortValue } from "./sort.slice";
+import { createSelector } from '@reduxjs/toolkit';
+import { RootState } from '@store';
+import { TLolChampionItem } from '@types';
+import { selectChampionsFilterSearch } from './filter.slice';
+import { selectSortAsc, selectSortValue } from './sort.slice';
 
 const selectState = (state: RootState) => state.lolChampions;
 
@@ -39,7 +39,7 @@ const selectSortChampions = createSelector(
   (champions, asc, value) => {
     let sortedChampions = champions;
 
-    if (!asc && value === "name") {
+    if (!asc && value === 'name') {
       sortedChampions = champions.slice().reverse();
     }
 

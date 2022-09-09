@@ -1,7 +1,7 @@
-import React from "react";
-import clsx from "clsx";
-import { SubLink } from "../sub-link";
-import { Props } from "./sub-links.props";
+import React from 'react';
+import clsx from 'clsx';
+import { SubLink } from '../sub-link';
+import { Props } from './sub-links.props';
 
 export const SubLinks = ({
   className,
@@ -11,7 +11,7 @@ export const SubLinks = ({
   return (
     <ul
       className={clsx(
-        "bg-slate-800 pt-4 w-fit md:rounded-b-md md:absolute md:top-12 md:left-0 md:hidden md:hover:block md:group-hover:block",
+        'bg-slate-800 pt-4 w-fit md:rounded-b-md md:absolute md:top-12 md:left-0 md:hidden md:hover:block md:group-hover:block',
         className
       )}
       {...props}

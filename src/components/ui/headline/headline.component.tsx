@@ -1,10 +1,10 @@
-import React from "react";
-import { Props } from "./headline.props";
-import clsx from "clsx";
+import React from 'react';
+import { Props } from './headline.props';
+import clsx from 'clsx';
 
 export const Headline = ({
   children,
-  tag = "h1",
+  tag = 'h1',
   className,
   ...props
 }: Props): JSX.Element => {
@@ -12,9 +12,9 @@ export const Headline = ({
 
   return (
     <Tag
-      className={clsx(className, "font-medium", {
-        "text-2xl": tag === "h1",
-        "text-xl": tag === "h2",
+      className={clsx(className, 'font-medium', {
+        'text-2xl': tag === 'h1',
+        'text-xl': tag === 'h2',
       })}
       {...props}
     >

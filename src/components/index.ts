@@ -1,2 +1,2 @@
-export * from "./ui";
-export * from "./lol";
+export * from './ui';
+export * from './lol';

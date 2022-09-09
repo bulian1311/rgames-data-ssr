@@ -1,8 +1,8 @@
-import React, { FormEvent } from "react";
-import { Input } from "@components";
-import { selectItemsFilterSearch, setItemsFilterSearch } from "@store";
-import { useAppSelector, useAppDispatch } from "@hooks";
-import { Props } from "./search.props";
+import React, { FormEvent } from 'react';
+import { Input } from '@components';
+import { selectItemsFilterSearch, setItemsFilterSearch } from '@store';
+import { useAppSelector, useAppDispatch } from '@hooks';
+import { Props } from './search.props';
 
 export const ItemsSearch = ({ ...props }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ export const ItemsSearch = ({ ...props }: Props): JSX.Element => {
   };
 
   const onClear = () => {
-    dispatch(setItemsFilterSearch(""));
+    dispatch(setItemsFilterSearch(''));
   };
 
   return (

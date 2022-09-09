@@ -1,9 +1,13 @@
-import React from "react";
-import { ItemsSearch } from "./search";
-import { ItemsTags } from "./tags";
-import { Props } from "./filter.props";
+import React from 'react';
+import { useAppSelector } from '@hooks';
+import { selectItemsTree } from '@store';
+import { ItemsSearch } from './search';
+import { ItemsTags } from './tags';
+import { Props } from './filter.props';
 
-export const ItemsFilter = ({ tree, ...props }: Props): JSX.Element => {
+export const ItemsFilter = ({ ...props }: Props): JSX.Element => {
+  const tree = useAppSelector(selectItemsTree);
+
   const renderTags = () => {
     return tree.map((t) => <ItemsTags key={t.header} tree={t} />);
   };

@@ -36,6 +36,15 @@ export type TResLolItem = {
   };
 };
 
+export type TLolItem = {
+  id: string;
+  name: string;
+  colloq: string;
+  image: string;
+  gold: number;
+  tags: string[];
+};
+
 export type TResLolItemTree = {
   header: string;
   tags: string[];

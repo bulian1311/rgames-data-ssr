@@ -1,7 +1,7 @@
-import React from "react";
-import clsx from "clsx";
-import { Icon } from "@components";
-import { Props } from "./display-button.props";
+import React from 'react';
+import clsx from 'clsx';
+import { Icon } from '@components';
+import { Props } from './display-button.props';
 
 export const DisplayButton = ({
   icon,
@@ -10,8 +10,8 @@ export const DisplayButton = ({
 }: Props): JSX.Element => {
   return (
     <button
-      className={clsx("p-2", {
-        "bg-slate-800": active,
+      className={clsx('p-2', {
+        'bg-slate-800': active,
       })}
       {...props}
     >

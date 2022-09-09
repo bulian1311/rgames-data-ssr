@@ -1,8 +1,8 @@
-import React from "react";
-import { Headline } from "@components";
-import { ItemTag } from "./tag";
-import { THeaderMatching, headerMatching } from "@types";
-import { Props } from "./tags.props";
+import React from 'react';
+import { Headline } from '@components';
+import { THeaderMatching, headerMatching } from '@types';
+import { ItemTag } from './tag';
+import { Props } from './tags.props';
 
 export const ItemsTags = ({ tree, ...props }: Props): JSX.Element => {
   const header: THeaderMatching = tree.header as THeaderMatching;

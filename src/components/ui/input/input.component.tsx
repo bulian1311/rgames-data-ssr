@@ -1,6 +1,6 @@
-import React from "react";
-import { Icon } from "../icon";
-import { TProps } from "./input.props";
+import React from 'react';
+import { Icon } from '@components';
+import { TProps } from './input.props';
 
 export const Input = ({
   icon,

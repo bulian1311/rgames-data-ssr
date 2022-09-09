@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Props } from "./navbar.props";
-import Link from "next/link";
-import { NavLinks } from "./nav-links";
-import { Button, Icon } from "@components";
+import React, { useState } from 'react';
+import { Props } from './navbar.props';
+import { Link } from 'react-router-dom';
+import { NavbarLinks } from './navbar-links';
+import { Button, Icon } from '@components';
 
 export const Navbar = ({ ...props }: Props): JSX.Element => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -14,16 +14,14 @@ export const Navbar = ({ ...props }: Props): JSX.Element => {
     >
       <Icon
         onClick={() => setIsNavOpen(!isNavOpen)}
-        type={isNavOpen ? "remove" : "lines"}
+        type={isNavOpen ? 'remove' : 'lines'}
         className="z-50 md:hidden"
       />
 
-      <Link href="/">
-        <a className="block z-50">
-          <span>Logo</span>
-        </a>
+      <Link to="/" className="block z-50 text-slate-200">
+        <span>Logo</span>
       </Link>
-      <NavLinks isOpen={isNavOpen} />
+      <NavbarLinks isOpen={isNavOpen} />
       <div className="z-50 my-2 md:my-0">
         <Button name="Войти" />
       </div>

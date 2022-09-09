@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
-import { TLolItemTree } from "@types";
+import { HTMLAttributes } from 'react';
+import { TResLolItemTree } from '@types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  tree: TLolItemTree;
+  tree: TResLolItemTree;
 };

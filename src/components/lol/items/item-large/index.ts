@@ -1,1 +1,1 @@
-export * from "./item-large.component";
+export * from './item-large.component';

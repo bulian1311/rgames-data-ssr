@@ -1,11 +1,12 @@
-import { client, VERSION, LANG } from "./client";
+import { client, VERSION, LANG } from './client';
 import {
   TResLolChampionShort,
   TResLolChampionFull,
   TLolChampionItem,
   TResLolItem,
   TResLolItemTree,
-} from "@types";
+  TLolItem,
+} from '@types';
 
 class LolDataService {
   fetctChampions = async (): Promise<{
@@ -26,11 +27,11 @@ class LolDataService {
           id: champ.id,
           key: champ.key,
           name: champ.name,
-          image: champ.id + "_0.jpg",
+          image: champ.id + '_0.jpg',
         };
 
-        if (champion.id === "Fiddlesticks") {
-          champion.image = "FiddleSticks_0.jpg";
+        if (champion.id === 'Fiddlesticks') {
+          champion.image = 'FiddleSticks_0.jpg';
         }
 
         return champion;
@@ -59,38 +60,44 @@ class LolDataService {
   };
 
   fetchItems = async (): Promise<{
-    data: { [id: string]: TResLolItem };
+    items: { [id: string]: TResLolItem };
+    itemsArray: TLolItem[];
     tree: TResLolItemTree[];
   }> => {
     try {
       const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
 
-      // const shortData: TLolItemShort[] = resItems.map((item) => ({
-      //   name: item.name,
-      //   image: item.image.full,
-      //   gold: item.gold.total,
-      //   tags: item.tags.map((t) => t.toUpperCase()),
-      //   colloq: item.colloq,
-      // }));
+      const dataArray: [string, TResLolItem][] = Object.entries(res.data.data);
 
-      // const data = shortData.filter((item) => {
-      //   const exclude =
-      //     item.name !== "Золотая лопатка" &&
-      //     item.name !== "Награда за строение" &&
-      //     item.name !== "Заглушка для Гангпланка" &&
-      //     !item.name.includes("500 серебряных змей");
+      const shortData: TLolItem[] = dataArray.map((item) => {
+        return {
+          id: item[0],
+          name: item[1].name,
+          image: item[1].image.full,
+          gold: item[1].gold.total,
+          tags: item[1].tags.map((t) => t.toUpperCase()),
+          colloq: item[1].colloq,
+        };
+      });
 
-      //   return exclude;
-      // });
+      const itemsArray = shortData.filter((item) => {
+        const exclude =
+          item.name !== 'Золотая лопатка' &&
+          item.name !== 'Награда за строение' &&
+          item.name !== 'Заглушка для Гангпланка' &&
+          !item.name.includes('500 серебряных змей');
 
-      const data: { [id: string]: TResLolItem } = res.data.data;
+        return exclude;
+      });
+
+      const items: { [id: string]: TResLolItem } = res.data.data;
 
       const tree: TResLolItemTree[] = res.data.tree;
 
-      return { data, tree };
+      return { items, itemsArray, tree };
     } catch (err) {
       console.error(err);
-      return { data: {}, tree: [] };
+      return { items: {}, tree: [], itemsArray: [] };
     }
   };
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import clsx from "clsx";
-import { Props } from "./icon.props";
+import React from 'react';
+import clsx from 'clsx';
+import { Props } from './icon.props';
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -14,61 +14,61 @@ import {
   CaretLeftIcon,
   CaretRightIcon,
   CaretUpIcon,
-} from "../../../icons";
+} from '@icons';
 
 export const Icon = ({
   type,
-  size = "normal",
+  size = 'normal',
   className,
   ...props
 }: Props): JSX.Element => {
   let Icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element = SearchIcon;
 
   switch (type) {
-    case "chevron-left":
+    case 'chevron-left':
       Icon = ChevronLeftIcon;
       break;
-    case "chevron-right":
+    case 'chevron-right':
       Icon = ChevronRightIcon;
       break;
-    case "lines":
+    case 'lines':
       Icon = LinesIcon;
       break;
-    case "remove":
+    case 'remove':
       Icon = RemoveIcon;
       break;
-    case "search":
+    case 'search':
       Icon = SearchIcon;
       break;
-    case "stop":
+    case 'stop':
       Icon = StopIcon;
       break;
-    case "table":
+    case 'table':
       Icon = TableIcon;
       break;
-    case "cell":
+    case 'cell':
       Icon = CellIcon;
       break;
-    case "caret-down":
+    case 'caret-down':
       Icon = CaretDownIcon;
       break;
-    case "caret-left":
+    case 'caret-left':
       Icon = CaretLeftIcon;
       break;
-    case "caret-right":
+    case 'caret-right':
       Icon = CaretRightIcon;
       break;
-    case "caret-up":
+    case 'caret-up':
       Icon = CaretUpIcon;
       break;
   }
 
   return (
     <span
-      className={clsx(className, "block", {
-        "w-3 h-3": size === "sm",
-        "w-4 h-4": size === "normal",
-        "w-8 h-8": size === "lg",
+      className={clsx(className, 'block', {
+        'w-3 h-3': size === 'sm',
+        'w-4 h-4': size === 'normal',
+        'w-8 h-8': size === 'lg',
       })}
       {...props}
     >

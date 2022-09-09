@@ -1,1 +1,1 @@
-export * from "./champion-item-line.component";
+export * from './champion-item-line.component';

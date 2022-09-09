@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "@store";
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
+import { RootState } from '@store';
 
 export type TItemsFilterState = {
   search: string;
@@ -7,12 +7,12 @@ export type TItemsFilterState = {
 };
 
 const initialState: TItemsFilterState = {
-  search: "",
+  search: '',
   tags: [],
 };
 
 export const itemsFilterSlice = createSlice({
-  name: "lol/items/filter",
+  name: 'lol/items/filter',
   initialState,
   reducers: {
     setItemsFilterSearch: (state, action: PayloadAction<string>) => {
@@ -34,10 +34,16 @@ export const itemsFilterSlice = createSlice({
 export const { setItemsFilterSearch, setItemsFilterTag } =
   itemsFilterSlice.actions;
 
-export const selectItemsFilterSearch = (state: RootState) =>
-  state.lolItemsFilter.search;
+const selectState = (state: RootState) => state.lolItemsFilter;
 
-export const selectItemsFilterTags = (state: RootState) =>
-  state.lolItemsFilter.tags;
+export const selectItemsFilterSearch = createSelector(
+  [selectState],
+  (state) => state.search
+);
+
+export const selectItemsFilterTags = createSelector(
+  [selectState],
+  (state) => state.tags
+);
 
 export const lolItemsFilterReducer = itemsFilterSlice.reducer;

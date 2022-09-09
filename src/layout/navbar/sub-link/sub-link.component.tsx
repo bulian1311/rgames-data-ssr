@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { Props } from "./sub-link.props";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Props } from './sub-link.props';
 
 export const SubLink = ({ sublink, ...props }: Props): JSX.Element => {
   return (
@@ -9,7 +9,7 @@ export const SubLink = ({ sublink, ...props }: Props): JSX.Element => {
       key={sublink.name}
       {...props}
     >
-      <Link href={sublink.to}>{sublink.name}</Link>
+      <Link to={sublink.to}>{sublink.name}</Link>
     </li>
   );
 };

@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
-import { RootState } from "@store";
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
+import { RootState } from '@store';
 
-export type TSortValue = "name" | "ban";
+export type TSortValue = 'name' | 'ban';
 
 export type TSortState = {
   value: TSortValue;
@@ -9,12 +9,12 @@ export type TSortState = {
 };
 
 const initialState: TSortState = {
-  value: "name",
+  value: 'name',
   asc: true,
 };
 
 export const sortSlice = createSlice({
-  name: "lol/champions/sort",
+  name: 'lol/champions/sort',
   initialState,
   reducers: {
     setSortAsc: (state, action: PayloadAction<boolean>) => {

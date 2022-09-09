@@ -1,8 +1,8 @@
-import React, { FormEvent } from "react";
-import { Input } from "@components";
-import { useAppSelector, useAppDispatch } from "@hooks";
-import { selectChampionsFilterSearch, setChampionsFilterSearch } from "@store";
-import { Props } from "./search.props";
+import React, { FormEvent } from 'react';
+import { Input } from '@components';
+import { useAppSelector, useAppDispatch } from '@hooks';
+import { selectChampionsFilterSearch, setChampionsFilterSearch } from '@store';
+import { Props } from './search.props';
 
 export const ChampionsSearch = ({ ...props }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ export const ChampionsSearch = ({ ...props }: Props): JSX.Element => {
   };
 
   const onClear = () => {
-    dispatch(setChampionsFilterSearch(""));
+    dispatch(setChampionsFilterSearch(''));
   };
   return (
     <div className="flex gap-4 items-center">

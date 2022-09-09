@@ -1,1 +1,1 @@
-export * from "./lol-layout.component";
+export * from './lol-layout.component';

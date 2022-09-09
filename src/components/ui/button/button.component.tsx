@@ -1,5 +1,5 @@
-import React from "react";
-import { Props } from "./button.props";
+import React from 'react';
+import { Props } from './button.props';
 
 export const Button = ({ name, ...props }: Props): JSX.Element => {
   return (

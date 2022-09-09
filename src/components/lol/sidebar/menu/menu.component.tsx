@@ -1,7 +1,7 @@
-import React from "react";
-import { Block } from "@components";
-import { MenuLink } from "./menu-link";
-import { Props } from "./menu.props";
+import React from 'react';
+import { Block } from '@components';
+import { MenuLink } from './menu-link';
+import { Props } from './menu.props';
 
 export const Menu = ({ ...props }: Props): JSX.Element => {
   return (
