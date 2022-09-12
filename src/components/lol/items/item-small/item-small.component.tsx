@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { Props } from "./item-small.props";
-import { ItemModal } from "../item-modal";
+import React from 'react';
+import Link from 'next/link';
+import { Props } from './item-small.props';
+import { ItemModal } from '../item-modal';
 
 export const ItemSmall = ({ item, ...props }: Props): JSX.Element => {
   return (

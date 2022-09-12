@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "@components";
-import clsx from "clsx";
-import { Props } from "./menu-link.props";
+import React from 'react';
+import { NavLink } from '@components';
+import clsx from 'clsx';
+import { Props } from './menu-link.props';
 
 export const MenuLink = ({
   to,

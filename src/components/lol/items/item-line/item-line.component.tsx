@@ -1,14 +1,14 @@
-import React from "react";
-import Link from "next/link";
-import { TTagMatching, tagMatching } from "@types";
-import { ItemModal } from "../item-modal";
-import { Props } from "./item-line.props";
+import React from 'react';
+import Link from 'next/link';
+import { TTagMatching, tagMatching } from '@types';
+import { ItemModal } from '../item-modal';
+import { Props } from './item-line.props';
 
 export const ItemLine = ({ item, ...props }: Props): JSX.Element => {
   const renderTags = () => {
     return item.tags.map((tag) => {
       const matchTag: TTagMatching = tag as TTagMatching;
-      if (tag === "ABILITYHASTE") return;
+      if (tag === 'ABILITYHASTE') return;
 
       return (
         <div key={tag} className="bg-slate-900 px-2 py-1 rounded-md">

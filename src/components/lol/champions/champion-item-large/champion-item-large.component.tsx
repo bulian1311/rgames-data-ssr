@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { Props } from "./champion-item-large.props";
+import React from 'react';
+import Link from 'next/link';
+import { Props } from './champion-item-large.props';
 
 export const ChampionItemLarge = ({
   champion,

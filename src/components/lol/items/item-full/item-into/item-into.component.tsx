@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import { useAppSelector } from "@hooks";
-import { selectItemById } from "@store";
-import { ItemModal } from "../../item-modal";
-import { Props } from "./item-into.props";
+import React from 'react';
+import Link from 'next/link';
+import { useAppSelector } from '@hooks';
+import { selectItemById } from '@store';
+import { ItemModal } from '../../item-modal';
+import { Props } from './item-into.props';
 
 export const ItemInto = ({ itemId, ...props }: Props): JSX.Element => {
   const item = useAppSelector(selectItemById(itemId));

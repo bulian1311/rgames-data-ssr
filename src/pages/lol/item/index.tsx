@@ -1,7 +1,7 @@
-import type { NextPage, GetStaticProps } from "next";
-import { LolLayout, Items } from "@components";
-import { lolDataService } from "@services";
-import { TLolItemShort, TLolItemTree } from "@types";
+import type { NextPage, GetStaticProps } from 'next';
+import { LolLayout, Items } from '@components';
+import { lolDataService } from '@services';
+import { TLolItemShort, TLolItemTree } from '@types';
 
 type TProps = {
   items: {

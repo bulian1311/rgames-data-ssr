@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { Props } from "./sub-link.props";
+import React from 'react';
+import Link from 'next/link';
+import { Props } from './sub-link.props';
 
 export const SubLink = ({ sublink, ...props }: Props): JSX.Element => {
   return (

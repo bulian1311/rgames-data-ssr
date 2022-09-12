@@ -1,9 +1,9 @@
-import "../styles/globals.css";
-import { Provider } from "react-redux";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { Layout } from "@layout";
-import { store } from "@store";
+import '../styles/globals.css';
+import { Provider } from 'react-redux';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { Layout } from '@layout';
+import { store } from '@store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

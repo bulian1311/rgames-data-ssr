@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import clsx from "clsx";
-import { NavLink } from "@components";
-import { Props } from "./navbar-link.props";
+import React, { useState } from 'react';
+import clsx from 'clsx';
+import { NavLink } from '@components';
+import { Props } from './navbar-link.props';
 
 export const NavbarLink = ({ link, ...props }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

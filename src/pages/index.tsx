@@ -1,5 +1,5 @@
-import type { NextPage } from "next";
-import { Block, Headline, Input } from "@components";
+import type { NextPage } from 'next';
+import { Block, Headline, Input } from '@components';
 
 const HomePage: NextPage = () => {
   return (

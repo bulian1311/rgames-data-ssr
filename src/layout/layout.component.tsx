@@ -1,8 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { Props } from "./layout.props";
-import { Navbar } from "./navbar";
-import { Footer } from "./footer";
+import React from 'react';
+import Image from 'next/image';
+import { Props } from './layout.props';
+import { Navbar } from './navbar';
+import { Footer } from './footer';
 
 export const Layout = ({ children }: Props): JSX.Element => {
   return (
@@ -13,7 +13,7 @@ export const Layout = ({ children }: Props): JSX.Element => {
           layout="fill"
           objectFit="cover"
           objectPosition="cover"
-          src={"/bg.jpg"}
+          src={'/bg.jpg'}
         />
       </div>
       <div className="fixed top-0 left-0 w-full h-full z-[-1] bg-bgimage"></div>
