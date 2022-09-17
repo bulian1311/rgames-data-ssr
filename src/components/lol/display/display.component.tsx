@@ -1,15 +1,16 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '@hooks';
-import { selectDisplayValue, TDisplayValue, setDisplayValue } from '@store';
+import { TDisplayValue } from '@types';
 import { DisplayButton } from './display-button';
 import { Props } from './display.props';
 
-export const Display = ({ ...props }: Props): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const displayValue = useAppSelector(selectDisplayValue);
-
+export const Display = ({
+  displayValue,
+  setDisplayValue,
+  ...props
+}: Props): JSX.Element => {
   const handleClick = (value: TDisplayValue) => {
-    dispatch(setDisplayValue(value));
+    setDisplayValue(value);
   };
 
   return (

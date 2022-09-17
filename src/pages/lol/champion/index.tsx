@@ -1,20 +1,29 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import { Champions, LolLayout } from '@components';
+import { fetctChampions } from '@services';
+import { TLolChampion } from '@types';
+import { ChampionsContext } from '@context';
 
-const ChampionsPage: NextPage = () => {
+type TProps = {
+  champions: TLolChampion[];
+};
+
+const ChampionsPage: NextPage<TProps> = ({ champions }) => {
   return (
     <LolLayout>
-      <Champions />
+      <ChampionsContext.Provider value={champions}>
+        <Champions />
+      </ChampionsContext.Provider>
     </LolLayout>
   );
 };
 
-// export const getStaticProps: GetStaticProps<TProps> = async () => {
-//   const champions = await lolDataService.fetctChampions();
+export const getStaticProps: GetStaticProps<TProps> = async () => {
+  const champions = await fetctChampions();
 
-//   return {
-//     props: { champions },
-//   };
-// };
+  return {
+    props: { champions },
+  };
+};
 
 export default ChampionsPage;

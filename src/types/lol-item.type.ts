@@ -39,7 +39,6 @@ export type TResLolItem = {
 export type TLolItem = {
   id: string;
   name: string;
-  colloq: string;
   image: string;
   gold: number;
   tags: string[];

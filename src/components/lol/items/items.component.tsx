@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { useAppSelector } from '@hooks';
 import { selectDisplayValue, selectItems } from '@store';
 import { Display } from '@components';
+import { TDisplayValue } from '@types';
 import { ItemsFilter } from './filter';
 import { ItemLine } from './item-line';
 import { ItemLarge } from './item-large';
@@ -11,7 +12,7 @@ import { Props } from './items.props';
 
 export const Items = ({ ...props }: Props): JSX.Element => {
   const items = useAppSelector(selectItems);
-  const displayValue = useAppSelector(selectDisplayValue);
+  const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
 
   let Item: ({ item }: any) => JSX.Element = ItemLarge;
 
@@ -35,7 +36,10 @@ export const Items = ({ ...props }: Props): JSX.Element => {
     <>
       <ItemsFilter />
       <div className="flex items-center justify-end">
-        <Display />
+        <Display
+          displayValue={displayValue}
+          setDisplayValue={setDisplayValue}
+        />
       </div>
       {displayValue === 'lines' && (
         <div className="flex justify-between items-center">

@@ -8,7 +8,8 @@
       "@hooks": ["./src/hooks/index"],
       "@icons": ["./src/icons/index"],
       "@layout": ["./src/layout/index"],
-      "@services": ["./src/services/index"]
+      "@services": ["./src/services/index"],
+      "@context": ["./src/context/index"]
     }
   }
 }

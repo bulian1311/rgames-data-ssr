@@ -1,13 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Icon } from '@components';
-import { useAppSelector } from '@hooks';
-import { selectSortAsc } from '@store';
 import { Props } from './sort-button.props';
 
-export const SortButton = ({ name, active, ...props }: Props): JSX.Element => {
-  const asc = useAppSelector(selectSortAsc);
-
+export const SortButton = ({
+  name,
+  active,
+  sortAsc,
+  ...props
+}: Props): JSX.Element => {
   return (
     <button
       type="button"
@@ -23,7 +24,7 @@ export const SortButton = ({ name, active, ...props }: Props): JSX.Element => {
       {active && (
         <Icon
           className={clsx('', {
-            'rotate-180': !asc,
+            'rotate-180': !sortAsc,
           })}
           type="caret-down"
         />

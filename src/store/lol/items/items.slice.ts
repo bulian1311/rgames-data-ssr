@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@store';
-import { lolDataService } from '@services';
+import { fetchItems, fetchItemsMap, fetchItemsTree } from '@services';
 import {
   TResLolItem,
   TResLolItemTree,
@@ -12,8 +12,10 @@ export const fetchLolItems = createAsyncThunk(
   'lol/fetchItems',
   async (_, { rejectWithValue }) => {
     try {
-      const items = await lolDataService.fetchItems();
-      return items;
+      const itemsArray = await fetchItems();
+      const items = await fetchItemsMap();
+      const tree = await fetchItemsTree();
+      return { itemsArray, items, tree };
     } catch (err) {
       return rejectWithValue(err as ValidationErrors);
     }

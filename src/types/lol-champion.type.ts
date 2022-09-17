@@ -93,7 +93,7 @@ export type TResLolChampionShort = {
   stats: TStats;
 };
 
-export type TLolChampionItem = {
+export type TLolChampion = {
   id: string;
   key: string;
   name: string;

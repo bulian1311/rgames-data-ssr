@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { Block, Sidebar } from '@components';
 import { useAppDispatch } from '@hooks';
-import { fetchLolChampions, fetchLolItems } from '@store';
+import { fetchLolItems } from '@store';
 import { Props } from './lol-layout.props';
 
 export const LolLayout = ({
@@ -13,7 +13,6 @@ export const LolLayout = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchLolChampions());
     dispatch(fetchLolItems());
   }, []);
 

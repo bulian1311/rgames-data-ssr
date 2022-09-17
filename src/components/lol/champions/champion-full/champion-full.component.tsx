@@ -2,19 +2,19 @@ import React from 'react';
 import { Headline } from '@components';
 import { URL, VERSION } from '@services';
 import { useAppSelector } from '@hooks';
-import { selectChampion, selectChampionStatus } from '@store';
+//import { selectChampion, selectChampionStatus } from '@store';
 import { Props } from './champion-full.props';
 
 export const Champion = ({ ...props }: Props): JSX.Element => {
-  const champion = useAppSelector(selectChampion);
-  const status = useAppSelector(selectChampionStatus);
+  // const champion = useAppSelector(selectChampion);
+  // const status = useAppSelector(selectChampionStatus);
   const imgurl = `${URL}cdn/${VERSION}/img`;
 
-  if (!champion || status === 'pending') return <div>Loading...</div>;
+  //if (!champion || status === 'pending') return <div>Loading...</div>;
 
   return (
     <div className="flex gap-4">
-      <img
+      {/* <img
         src={`${imgurl}/champion/${champion && champion.image.full}`}
         width={120}
         height={120}
@@ -36,7 +36,7 @@ export const Champion = ({ ...props }: Props): JSX.Element => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

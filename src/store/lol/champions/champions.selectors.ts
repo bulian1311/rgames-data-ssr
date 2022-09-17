@@ -1,53 +1,53 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '@store';
-import { TLolChampionItem } from '@types';
-import { selectChampionsFilterSearch } from './filter.slice';
-import { selectSortAsc, selectSortValue } from './sort.slice';
+// import { RootState } from '@store';
+// import { TLolChampionItem } from '@types';
+// import { selectChampionsFilterSearch } from './filter.slice';
+// import { selectSortAsc, selectSortValue } from './sort.slice';
 
-const selectState = (state: RootState) => state.lolChampions;
+// const selectState = (state: RootState) => state.lolChampions;
 
-const selectChampionsArray = createSelector(
-  [selectState],
-  (champions): TLolChampionItem[] => champions.championsArray
-);
+// const selectChampionsArray = createSelector(
+//   [selectState],
+//   (champions): TLolChampionItem[] => champions.championsArray
+// );
 
-const selectFilteredChampions = createSelector(
-  [selectChampionsArray, selectChampionsFilterSearch],
-  (champions, filterSearch) => {
-    let filteredChampions = champions;
+// const selectFilteredChampions = createSelector(
+//   [selectChampionsArray, selectChampionsFilterSearch],
+//   (champions, filterSearch) => {
+//     let filteredChampions = champions;
 
-    if (filterSearch) {
-      filteredChampions = champions.filter((champ) => {
-        const champRu = champ.name
-          .toLocaleLowerCase()
-          .includes(filterSearch.toLocaleLowerCase());
+//     if (filterSearch) {
+//       filteredChampions = champions.filter((champ) => {
+//         const champRu = champ.name
+//           .toLocaleLowerCase()
+//           .includes(filterSearch.toLocaleLowerCase());
 
-        const champEng = champ.id
-          .toLocaleLowerCase()
-          .includes(filterSearch.toLocaleLowerCase());
+//         const champEng = champ.id
+//           .toLocaleLowerCase()
+//           .includes(filterSearch.toLocaleLowerCase());
 
-        return champRu || champEng;
-      });
-    }
+//         return champRu || champEng;
+//       });
+//     }
 
-    return filteredChampions;
-  }
-);
+//     return filteredChampions;
+//   }
+// );
 
-const selectSortChampions = createSelector(
-  [selectFilteredChampions, selectSortAsc, selectSortValue],
-  (champions, asc, value) => {
-    let sortedChampions = champions;
+// const selectSortChampions = createSelector(
+//   [selectFilteredChampions, selectSortAsc, selectSortValue],
+//   (champions, asc, value) => {
+//     let sortedChampions = champions;
 
-    if (!asc && value === 'name') {
-      sortedChampions = champions.slice().reverse();
-    }
+//     if (!asc && value === 'name') {
+//       sortedChampions = champions.slice().reverse();
+//     }
 
-    return sortedChampions;
-  }
-);
+//     return sortedChampions;
+//   }
+// );
 
-export const selectChampions = createSelector(
-  [selectSortChampions],
-  (champions) => champions
-);
+// export const selectChampions = createSelector(
+//   [selectSortChampions],
+//   (champions) => champions
+// );

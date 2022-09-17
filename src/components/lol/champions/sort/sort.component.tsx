@@ -1,25 +1,25 @@
-import React from 'react';
-import { useAppSelector, useAppDispatch } from '@hooks';
-import {
-  selectSortValue,
-  selectSortAsc,
-  setSortValue,
-  setSortAsc,
-  TSortValue,
-} from '@store';
+import React, { useState } from 'react';
 import { SortButton } from './sort-button';
-import { Props } from './sort.props';
+import { Props, TSortValue } from './sort.props';
 
-export const Sort = ({ ...props }: Props): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const activeFilter = useAppSelector(selectSortValue);
-  const asc = useAppSelector(selectSortAsc);
+export const Sort = ({
+  renderChampions,
+  setRenderChampions,
+  ...props
+}: Props): JSX.Element => {
+  const [sortAsc, setSortAsc] = useState<boolean>(true);
+  const [sortValue, setSortValue] = useState<TSortValue>('name');
 
   const handleClick = (value: TSortValue) => {
-    value !== activeFilter && dispatch(setSortValue(value));
-    value !== activeFilter && dispatch(setSortAsc(true));
+    let sortedChampions = renderChampions;
 
-    value === activeFilter && dispatch(setSortAsc(!asc));
+    if (sortValue === 'name') {
+      sortedChampions = renderChampions.slice().reverse();
+      setSortAsc(!sortAsc);
+    }
+
+    setSortValue(value);
+    setRenderChampions(sortedChampions);
   };
 
   return (
@@ -27,13 +27,15 @@ export const Sort = ({ ...props }: Props): JSX.Element => {
       <span className="mr-2 text-slate-200">Сортировать:</span>
       <SortButton
         name="Имя"
+        sortAsc={sortAsc}
         onClick={() => handleClick('name')}
-        active={activeFilter === 'name'}
+        active={sortValue === 'name'}
       />
       <SortButton
         name="Бан%"
+        sortAsc={sortAsc}
         onClick={() => handleClick('ban')}
-        active={activeFilter === 'ban'}
+        active={sortValue === 'ban'}
       />
     </div>
   );
