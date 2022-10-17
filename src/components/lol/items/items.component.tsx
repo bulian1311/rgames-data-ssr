@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import clsx from 'clsx';
-import { useAppSelector } from '@hooks';
-import { selectDisplayValue, selectItems } from '@store';
 import { Display } from '@components';
 import { TDisplayValue } from '@types';
 import { ItemsFilter } from './filter';
 import { ItemLine } from './item-line';
 import { ItemLarge } from './item-large';
 import { ItemSmall } from './item-small';
+import { itemsReducer } from './items.reducer';
+import { ItemsProvider } from './items.context';
 import { Props } from './items.props';
 
-export const Items = ({ ...props }: Props): JSX.Element => {
-  const items = useAppSelector(selectItems);
+export const Items = ({ items, tree, ...props }: Props): JSX.Element => {
+  const [state, dispatch] = useReducer(itemsReducer, {
+    searchQery: '',
+    activeTags: [],
+  });
   const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
 
   let Item: ({ item }: any) => JSX.Element = ItemLarge;
@@ -28,13 +31,39 @@ export const Items = ({ ...props }: Props): JSX.Element => {
       break;
   }
 
-  const renderItems = () => {
-    return items.map((item) => <Item key={item.id} item={item} />);
+  const renderItemItems = () => {
+    let filteredItems = items;
+
+    if (state.searchQery) {
+      filteredItems = filteredItems.filter((item) => {
+        const itemRu = item.name
+          .toLocaleLowerCase()
+          .includes(state.searchQery.toLocaleLowerCase());
+
+        const itemEn = item.colloq
+          .toLocaleLowerCase()
+          .includes(state.searchQery.toLocaleLowerCase());
+
+        return itemRu || itemEn;
+      });
+    }
+
+    if (state.activeTags.length > 0) {
+      filteredItems = filteredItems.filter((item) => {
+        let includeTag = state.activeTags.every((tag) =>
+          item.tags.includes(tag)
+        );
+
+        return includeTag;
+      });
+    }
+
+    return filteredItems.map((item) => <Item key={item.id} item={item} />);
   };
 
   return (
-    <>
-      <ItemsFilter />
+    <ItemsProvider value={{ state, dispatch }}>
+      <ItemsFilter tree={tree} />
       <div className="flex items-center justify-end">
         <Display
           displayValue={displayValue}
@@ -54,8 +83,8 @@ export const Items = ({ ...props }: Props): JSX.Element => {
         })}
         {...props}
       >
-        {renderItems()}
+        {renderItemItems()}
       </div>
-    </>
+    </ItemsProvider>
   );
 };

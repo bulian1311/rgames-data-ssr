@@ -4,7 +4,7 @@ import {
   TResLolChampionFull,
   TLolChampion,
   TResLolItem,
-  TResLolItemTree,
+  TLolItemTree,
   TLolItem,
 } from '@types';
 
@@ -83,11 +83,11 @@ export const fetchItemsMap = async (): Promise<{
   }
 };
 
-export const fetchItemsTree = async (): Promise<TResLolItemTree[]> => {
+export const fetchItemsTree = async (): Promise<TLolItemTree[]> => {
   try {
     const res = await client.get(`/cdn/${VERSION}/data/${LANG}/item.json`);
 
-    const tree: TResLolItemTree[] = res.data.tree;
+    const tree: TLolItemTree[] = res.data.tree;
 
     return tree;
   } catch (err) {
@@ -108,6 +108,7 @@ export const fetchItems = async (): Promise<TLolItem[]> => {
         name: item[1].name,
         image: item[1].image.full,
         gold: item[1].gold.total,
+        colloq: item[1].colloq,
         tags: item[1].tags.map((t) => t.toUpperCase()),
       };
     });

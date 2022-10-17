@@ -1,30 +1,29 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { Input } from '@components';
-import { selectItemsFilterSearch, setItemsFilterSearch } from '@store';
-import { useAppSelector, useAppDispatch } from '@hooks';
+import { useItems } from '../../use-items.hook';
 import { Props } from './search.props';
 
 export const ItemsSearch = ({ ...props }: Props): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const filterSearch = useAppSelector(selectItemsFilterSearch);
+  const { dispatch, state } = useItems();
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value;
-    dispatch(setItemsFilterSearch(newValue));
+    const value = e.currentTarget.value;
+
+    dispatch({ type: 'search', payload: value });
   };
 
   const onClear = () => {
-    dispatch(setItemsFilterSearch(''));
+    dispatch({ type: 'search', payload: '' });
   };
 
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-4 items-center" {...props}>
       <span>Найти:</span>
       <Input
         icon="search"
         onChange={handleChange}
         onClear={onClear}
-        value={filterSearch}
+        value={state.searchQery}
       />
     </div>
   );

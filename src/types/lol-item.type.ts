@@ -41,10 +41,11 @@ export type TLolItem = {
   name: string;
   image: string;
   gold: number;
+  colloq: string;
   tags: string[];
 };
 
-export type TResLolItemTree = {
+export type TLolItemTree = {
   header: string;
   tags: string[];
 };

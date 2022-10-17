@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import { useChampions } from '@hooks';
 import { Display } from '@components';
-import { TDisplayValue } from '@types';
+import { TDisplayValue, TLolChampion } from '@types';
 import { ChampionItemSmall } from './champion-item-small';
 import { ChampionItemLarge } from './champion-item-large';
 import { ChampionItemLine } from './champion-item-line';
@@ -12,7 +12,8 @@ import { Props } from './champions.props';
 
 export const Champions = ({ ...props }: Props): JSX.Element => {
   const champions = useChampions();
-  const [renderChampions, setRenderChampions] = useState(champions);
+  const [renderChampions, setRenderChampions] =
+    useState<TLolChampion[]>(champions);
   const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
 
   let ChampionItem = ChampionItemSmall;

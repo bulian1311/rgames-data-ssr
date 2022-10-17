@@ -1,28 +1,27 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { LolLayout, Items } from '@components';
-import { lolDataService } from '@services';
-import { TLolItemShort, TLolItemTree } from '@types';
+import { fetchItems, fetchItemsTree } from '@services';
+import { TLolItem, TLolItemTree } from '@types';
 
 type TProps = {
-  items: {
-    data: TLolItemShort[];
-    tree: TLolItemTree[];
-  };
+  items: TLolItem[];
+  tree: TLolItemTree[];
 };
 
-const ItemsPage: NextPage<TProps> = ({ items }) => {
+const ItemsPage: NextPage<TProps> = ({ items, tree }) => {
   return (
     <LolLayout>
-      <Items items={items} />
+      <Items items={items} tree={tree} />
     </LolLayout>
   );
 };
 
 export const getStaticProps: GetStaticProps<TProps> = async () => {
-  const items = await lolDataService.fetchItems();
+  const items = await fetchItems();
+  const tree = await fetchItemsTree();
 
   return {
-    props: { items },
+    props: { items, tree },
   };
 };
 
