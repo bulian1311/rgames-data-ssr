@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import clsx from 'clsx';
-import { useChampions } from '@hooks';
 import { Display } from '@components';
-import { TDisplayValue, TLolChampion } from '@types';
+import { TDisplayValue } from '@types';
 import { ChampionItemSmall } from './champion-item-small';
 import { ChampionItemLarge } from './champion-item-large';
 import { ChampionItemLine } from './champion-item-line';
 import { ChampionFilter } from './filter';
 import { Sort } from './sort';
+import { ChampionsReducer } from './champions.reducer';
+import { ChampionsProvider } from './champions.context';
 import { Props } from './champions.props';
 
-export const Champions = ({ ...props }: Props): JSX.Element => {
-  const champions = useChampions();
-  const [renderChampions, setRenderChampions] =
-    useState<TLolChampion[]>(champions);
+export const Champions = ({ champions, ...props }: Props): JSX.Element => {
   const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
+  const [state, dispatch] = useReducer(ChampionsReducer, {
+    searchQery: '',
+    sortValue: 'name',
+    sortAsc: false,
+  });
 
   let ChampionItem = ChampionItemSmall;
 
@@ -30,20 +33,37 @@ export const Champions = ({ ...props }: Props): JSX.Element => {
       break;
   }
 
-  const renderChampionItems = () => {
-    return renderChampions.map((champ) => (
+  const renderChampions = () => {
+    let filteredChampions = champions;
+
+    if (state.searchQery) {
+      filteredChampions = champions.filter((champ) => {
+        const champRu = champ.name
+          .toLocaleLowerCase()
+          .includes(state.searchQery.toLocaleLowerCase());
+
+        const champEng = champ.id
+          .toLocaleLowerCase()
+          .includes(state.searchQery.toLocaleLowerCase());
+
+        return champRu || champEng;
+      });
+    }
+
+    // if (!asc && value === 'name') {
+    //   sortedChampions = champions.slice().reverse();
+    // }
+
+    return filteredChampions.map((champ) => (
       <ChampionItem key={champ.key} champion={champ} />
     ));
   };
 
   return (
-    <>
-      <ChampionFilter setRenderChampions={setRenderChampions} />
+    <ChampionsProvider value={{ state, dispatch }}>
+      <ChampionFilter />
       <div className="flex items-center justify-between">
-        <Sort
-          renderChampions={renderChampions}
-          setRenderChampions={setRenderChampions}
-        />
+        <Sort />
         <Display
           displayValue={displayValue}
           setDisplayValue={setDisplayValue}
@@ -55,8 +75,8 @@ export const Champions = ({ ...props }: Props): JSX.Element => {
         })}
         {...props}
       >
-        {renderChampionItems()}
+        {renderChampions()}
       </div>
-    </>
+    </ChampionsProvider>
   );
 };

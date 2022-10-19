@@ -1,42 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SortButton } from './sort-button';
-import { Props, TSortValue } from './sort.props';
+import { Props } from './sort.props';
 
-export const Sort = ({
-  renderChampions,
-  setRenderChampions,
-  ...props
-}: Props): JSX.Element => {
-  const [sortAsc, setSortAsc] = useState<boolean>(true);
-  const [sortValue, setSortValue] = useState<TSortValue>('name');
-
-  const handleClick = (value: TSortValue) => {
-    let sortedChampions = renderChampions;
-
-    if (sortValue === 'name') {
-      sortedChampions = renderChampions.slice().reverse();
-      setSortAsc(!sortAsc);
-    }
-
-    setSortValue(value);
-    setRenderChampions(sortedChampions);
-  };
-
+export const Sort = ({ ...props }: Props): JSX.Element => {
   return (
     <div className="flex items-center gap-1 text-slate-400" {...props}>
       <span className="mr-2 text-slate-200">Сортировать:</span>
-      <SortButton
-        name="Имя"
-        sortAsc={sortAsc}
-        onClick={() => handleClick('name')}
-        active={sortValue === 'name'}
-      />
-      <SortButton
-        name="Бан%"
-        sortAsc={sortAsc}
-        onClick={() => handleClick('ban')}
-        active={sortValue === 'ban'}
-      />
+      <SortButton name="Имя" type="name" />
+      <SortButton name="Бан%" type="ban" />
     </div>
   );
 };

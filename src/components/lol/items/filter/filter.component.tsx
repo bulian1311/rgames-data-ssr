@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ItemsSearch } from './search';
 import { ItemsTags } from './tags';
 import { Props } from './filter.props';
 
 export const ItemsFilter = ({ tree, ...props }: Props): JSX.Element => {
-  const [activeTags, setactiveTags] = useState<string[]>([]);
-
   const renderTags = () => {
     return tree.map((t) => <ItemsTags key={t.header} tree={t} />);
   };

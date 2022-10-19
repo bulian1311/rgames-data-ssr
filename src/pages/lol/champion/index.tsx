@@ -2,7 +2,6 @@ import type { NextPage, GetStaticProps } from 'next';
 import { Champions, LolLayout } from '@components';
 import { fetctChampions } from '@services';
 import { TLolChampion } from '@types';
-import { ChampionsProvider } from '@context';
 
 type TProps = {
   champions: TLolChampion[];
@@ -11,9 +10,7 @@ type TProps = {
 const ChampionsPage: NextPage<TProps> = ({ champions }) => {
   return (
     <LolLayout>
-      <ChampionsProvider value={champions}>
-        <Champions />
-      </ChampionsProvider>
+      <Champions champions={champions} />
     </LolLayout>
   );
 };

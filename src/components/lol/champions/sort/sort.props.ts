@@ -1,9 +1,5 @@
-import { HTMLAttributes, Dispatch, SetStateAction } from 'react';
-import { TLolChampion } from '@types';
+import { HTMLAttributes } from 'react';
 
 export type TSortValue = 'name' | 'ban';
 
-export type Props = HTMLAttributes<HTMLDivElement> & {
-  renderChampions: TLolChampion[];
-  setRenderChampions: Dispatch<SetStateAction<TLolChampion[]>>;
-};
+export type Props = HTMLAttributes<HTMLDivElement> & {};

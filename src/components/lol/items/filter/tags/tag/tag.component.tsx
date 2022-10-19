@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { TTagMatching, tagMatching } from '@types';
-import { useItems } from '../../../use-items.hook';
+import { useItems } from '../../../items.hook';
 import { Props } from './tag.props';
 
 export const ItemTag = ({ tag, ...props }: Props): JSX.Element => {

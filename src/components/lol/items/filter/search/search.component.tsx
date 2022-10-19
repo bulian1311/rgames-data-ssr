@@ -1,6 +1,6 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent } from 'react';
 import { Input } from '@components';
-import { useItems } from '../../use-items.hook';
+import { useItems } from '../../items.hook';
 import { Props } from './search.props';
 
 export const ItemsSearch = ({ ...props }: Props): JSX.Element => {
