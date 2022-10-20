@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useMemo } from 'react';
 import clsx from 'clsx';
 import { Display } from '@components';
 import { TDisplayValue } from '@types';
@@ -8,6 +8,7 @@ import { ItemLarge } from './item-large';
 import { ItemSmall } from './item-small';
 import { itemsReducer } from './items.reducer';
 import { ItemsProvider } from './items.context';
+import { filterItems } from './items.helpers';
 import { Props } from './items.props';
 
 export const Items = ({ items, tree, ...props }: Props): JSX.Element => {
@@ -31,32 +32,8 @@ export const Items = ({ items, tree, ...props }: Props): JSX.Element => {
       break;
   }
 
-  const renderItemItems = () => {
-    let filteredItems = items;
-
-    if (state.searchQery) {
-      filteredItems = filteredItems.filter((item) => {
-        const itemRu = item.name
-          .toLocaleLowerCase()
-          .includes(state.searchQery.toLocaleLowerCase());
-
-        const itemEn = item.colloq
-          .toLocaleLowerCase()
-          .includes(state.searchQery.toLocaleLowerCase());
-
-        return itemRu || itemEn;
-      });
-    }
-
-    if (state.activeTags.length > 0) {
-      filteredItems = filteredItems.filter((item) => {
-        let includeTag = state.activeTags.every((tag) =>
-          item.tags.includes(tag)
-        );
-
-        return includeTag;
-      });
-    }
+  const renderItems = () => {
+    let filteredItems = useMemo(() => filterItems(items, state), [state]);
 
     return filteredItems.map((item) => <Item key={item.id} item={item} />);
   };
@@ -83,7 +60,7 @@ export const Items = ({ items, tree, ...props }: Props): JSX.Element => {
         })}
         {...props}
       >
-        {renderItemItems()}
+        {renderItems()}
       </div>
     </ItemsProvider>
   );

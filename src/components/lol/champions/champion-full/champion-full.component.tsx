@@ -1,7 +1,7 @@
 import React from 'react';
 import { Headline } from '@components';
 import { URL, VERSION } from '@services';
-import { useAppSelector } from '@hooks';
+//import { useAppSelector } from '@hooks';
 //import { selectChampion, selectChampionStatus } from '@store';
 import { Props } from './champion-full.props';
 

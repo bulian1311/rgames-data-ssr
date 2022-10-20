@@ -1,6 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '@hooks';
-import { selectItemById } from '@store';
+
 import { Modal } from '@components';
 import { Props } from './item-modal.props';
 
@@ -9,7 +8,7 @@ export const ItemModal = ({
   itemId,
   ...props
 }: Props): JSX.Element => {
-  const item = useAppSelector(selectItemById(itemId));
+  //const item = useAppSelector(selectItemById(itemId));
 
   const renderContent = () => (
     // <div className="flex gap-2" {...props}>

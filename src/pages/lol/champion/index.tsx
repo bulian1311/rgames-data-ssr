@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { Champions, LolLayout } from '@components';
-import { fetctChampions } from '@services';
+import { fetchChampions } from '@services';
 import { TLolChampion } from '@types';
 
 type TProps = {
@@ -16,7 +16,7 @@ const ChampionsPage: NextPage<TProps> = ({ champions }) => {
 };
 
 export const getStaticProps: GetStaticProps<TProps> = async () => {
-  const champions = await fetctChampions();
+  const champions = await fetchChampions();
 
   return {
     props: { champions },

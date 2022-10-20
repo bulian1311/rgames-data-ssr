@@ -23,7 +23,7 @@ export const fetchChampionsMap = async (): Promise<{
   }
 };
 
-export const fetctChampions = async (): Promise<TLolChampion[]> => {
+export const fetchChampions = async (): Promise<TLolChampion[]> => {
   try {
     const res = await client.get(`/cdn/${VERSION}/data/${LANG}/champion.json`);
 

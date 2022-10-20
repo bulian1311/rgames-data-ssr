@@ -1,17 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useAppSelector } from '@hooks';
-import { selectItemById } from '@store';
 import { Headline } from '@components';
 import { ItemInto } from './item-into';
 import { TreeDiagram } from '../tree-diagram';
 import { Props } from './item-full.props';
 
-export const ItemFull = ({ ...props }: Props): JSX.Element => {
+export const ItemFull = ({ item, ...props }: Props): JSX.Element => {
   const router = useRouter();
   const itemId = router.query.itemId;
-
-  const item = useAppSelector(selectItemById(itemId as string));
 
   if (!item) return <div>Loading...</div>;
 

@@ -6,7 +6,7 @@ import type {
 } from 'next';
 import Image from 'next/image';
 import { Block, Headline } from '@components';
-import { lolDataService } from '@services';
+import { fetchChampions, fetchChampion } from '@services';
 import { TResLolChampionFull } from '@types';
 
 type TProps = {
@@ -49,9 +49,9 @@ const ChampionPage: NextPage<TProps> = ({ champion }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const champions = await lolDataService.fetctChampions();
+  const champions = await fetchChampions();
 
-  const paths = champions.championsArray.map((champ) => ({
+  const paths = champions.map((champ) => ({
     params: { pid: champ.id },
   }));
 
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps<TProps> = async ({
 }: GetStaticPropsContext) => {
   if (!params) return { notFound: true };
 
-  const champion = await lolDataService.fetchChampion(params.pid as string);
+  const champion = await fetchChampion(params.pid as string);
 
   if (!champion) return { notFound: true };
 
