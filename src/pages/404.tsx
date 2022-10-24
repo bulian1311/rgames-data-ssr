@@ -6,7 +6,7 @@ const NotFound: NextPage = () => {
   return (
     <>
       <Block>
-        <Headline tag="h2">Такай страницы нет!</Headline>
+        <Headline tag="h2">Такой страницы нет!</Headline>
         <Link href="/">
           <a>Перейти на главную.</a>
         </Link>

@@ -9,8 +9,6 @@ export const ItemFull = ({ item, ...props }: Props): JSX.Element => {
   const router = useRouter();
   const itemId = router.query.itemId;
 
-  if (!item) return <div>Loading...</div>;
-
   return (
     <div {...props}>
       <div className="flex items-center justify-between border-slate-400 border-b-2 pb-2">

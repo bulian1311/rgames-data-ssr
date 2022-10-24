@@ -24,9 +24,14 @@ export const ChampionsReducer = (
       };
 
     case 'sort':
-      const existTag = state;
+      const sortValue = payload as TSortValue;
+      return {
+        ...state,
+        sortValue: sortValue,
+        sortAsc: !state.sortAsc,
+      };
 
     default:
-      throw new Error('Ошибка сортировки!');
+      throw new Error('Champions reducer error!');
   }
 };

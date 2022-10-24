@@ -17,7 +17,7 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
   const [state, dispatch] = useReducer(ChampionsReducer, {
     searchQery: '',
     sortValue: 'name',
-    sortAsc: false,
+    sortAsc: true,
   });
 
   let ChampionItem = ChampionItemSmall;

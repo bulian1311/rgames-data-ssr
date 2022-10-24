@@ -18,9 +18,9 @@ export const filterChampions = (champions: TLolChampion[], state: TState) => {
     });
   }
 
-  // if (!asc && value === 'name') {
-  //   sortedChampions = champions.slice().reverse();
-  // }
+  if (!state.sortAsc && state.sortValue === 'name') {
+    filteredChampions = champions.slice().reverse();
+  }
 
   return filteredChampions;
 };
