@@ -10,7 +10,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\""
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.3",
+    "@tanstack/react-query": "^4.13.0",
     "axios": "^0.27.2",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",

@@ -1,9 +1,17 @@
 import '../styles/globals.css';
+import { useState } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { Layout } from '@layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
     <>
       <Head>
@@ -13,7 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <Layout>
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <Component {...pageProps} />
+          </Hydrate>
+        </QueryClientProvider>
       </Layout>
     </>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 import { TTagMatching, tagMatching } from '@types';
-import { useItems } from '../../../items.hook';
+import { useItemsFilter } from '../../../items.hook';
 import { Props } from './tag.props';
 
 export const ItemTag = ({ tag, ...props }: Props): JSX.Element => {
-  const { state, dispatch } = useItems();
+  const { state, dispatch } = useItemsFilter();
   const { activeTags } = state;
   const matchTag: TTagMatching = tag as TTagMatching;
 
