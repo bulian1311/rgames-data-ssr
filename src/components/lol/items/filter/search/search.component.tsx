@@ -1,10 +1,10 @@
 import React, { FormEvent } from 'react';
 import { Input } from '@components';
-import { useItemsFilter } from '../../items.hook';
+import { useItemsFilters } from '@hooks';
 import { Props } from './search.props';
 
 export const ItemsSearch = ({ ...props }: Props): JSX.Element => {
-  const { dispatch, state } = useItemsFilter();
+  const { dispatch, state } = useItemsFilters();
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;

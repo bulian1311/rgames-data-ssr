@@ -1,10 +1,10 @@
 import React, { FormEvent } from 'react';
 import { Input } from '@components';
-import { useChampions } from '../../champions.hook';
+import { useChampionsFilters } from '@hooks';
 import { Props } from './search.props';
 
 export const ChampionsSearch = ({ ...props }: Props): JSX.Element => {
-  const { state, dispatch } = useChampions();
+  const { state, dispatch } = useChampionsFilters();
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;

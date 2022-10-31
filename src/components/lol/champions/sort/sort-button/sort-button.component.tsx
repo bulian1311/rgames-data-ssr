@@ -1,11 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Icon } from '@components';
-import { useChampions } from '../../champions.hook';
+import { useChampionsFilters } from '@hooks';
 import { Props } from './sort-button.props';
 
 export const SortButton = ({ name, type, ...props }: Props): JSX.Element => {
-  const { state, dispatch } = useChampions();
+  const { state, dispatch } = useChampionsFilters();
   const active = state.sortValue === type;
 
   const handleClick = () => {
