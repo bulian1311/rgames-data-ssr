@@ -1,31 +1,23 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 import { LolLayout, Items } from '@components';
-import { fetchItems, fetchItemsTree, fetchItemsMap } from '@services';
-import { TLolItem, TLolItemTree } from '@types';
+import { fetchItems, fetchItemsTree } from '@services';
 
-type TProps = {
-  items: TLolItem[];
-  tree: TLolItemTree[];
-};
-
-const ItemsPage: NextPage<TProps> = ({ items, tree }) => {
+const ItemsPage: NextPage = () => {
   return (
     <LolLayout>
-      <Items items={items} tree={tree} />
+      <Items />
     </LolLayout>
   );
 };
 
-export const getStaticProps: GetStaticProps<TProps> = async () => {
-  const items = await fetchItems();
-  const tree = await fetchItemsTree();
-
+export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(['itemsMap'], fetchItemsMap);
+  await queryClient.prefetchQuery(['items'], fetchItems);
+  await queryClient.prefetchQuery(['itemsTree'], fetchItemsTree);
 
   return {
-    props: { items, tree, dehydratedState: dehydrate(queryClient) },
+    props: { dehydratedState: dehydrate(queryClient) },
   };
 };
 

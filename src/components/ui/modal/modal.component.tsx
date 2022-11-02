@@ -30,19 +30,21 @@ export const Modal = ({ children, content, ...props }: Props): JSX.Element => {
     >
       {children}
 
-      <div
-        // style={{ top: position.y + 25, left: position.x }}
-        className={clsx(
-          'absolute p-2 border-purple-900 border-2 bg-slate-800 z-50 rounded-md top-auto right-auto bottom-0 left-0',
+      {!hidden && (
+        <div
+          // style={{ top: position.y + 25, left: position.x }}
+          className={clsx(
+            'absolute p-2 border-purple-900 border-2 bg-slate-800 z-50 rounded-md top-auto right-auto bottom-0 left-0',
 
-          {
-            hidden: hidden,
-          }
-        )}
-      >
-        {content}
-        <div>qqqq</div>
-      </div>
+            {
+              hidden: hidden,
+            }
+          )}
+        >
+          {content}
+          <div>qqqq</div>
+        </div>
+      )}
     </div>
   );
 };

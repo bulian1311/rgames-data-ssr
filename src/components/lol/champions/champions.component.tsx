@@ -2,6 +2,7 @@ import React, { useState, useReducer, useMemo } from 'react';
 import clsx from 'clsx';
 import { Display } from '@components';
 import { TDisplayValue } from '@types';
+import { useChampionsQuery } from '@hooks';
 import { ChampionItemSmall } from './champion-item-small';
 import { ChampionItemLarge } from './champion-item-large';
 import { ChampionItemLine } from './champion-item-line';
@@ -12,7 +13,8 @@ import { ChampionsProvider } from './champions.context';
 import { filterChampions } from './champions.helpers';
 import { Props } from './champions.props';
 
-export const Champions = ({ champions, ...props }: Props): JSX.Element => {
+export const Champions = ({ ...props }: Props): JSX.Element => {
+  const { data: champions, isLoading, isSuccess } = useChampionsQuery();
   const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
   const [state, dispatch] = useReducer(ChampionsReducer, {
     searchQery: '',
@@ -35,6 +37,8 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
   }
 
   const renderChampions = () => {
+    if (!isSuccess) return;
+
     const filteredChampions = useMemo(
       () => filterChampions(champions, state),
       [state]
@@ -44,6 +48,10 @@ export const Champions = ({ champions, ...props }: Props): JSX.Element => {
       <ChampionItem key={champ.key} champion={champ} />
     ));
   };
+
+  if (isLoading) {
+    return <span>Loading</span>;
+  }
 
   return (
     <ChampionsProvider value={{ state, dispatch }}>

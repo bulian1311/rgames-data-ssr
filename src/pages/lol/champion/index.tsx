@@ -1,25 +1,23 @@
 import type { NextPage, GetStaticProps } from 'next';
+import { QueryClient, dehydrate } from '@tanstack/react-query';
 import { Champions, LolLayout } from '@components';
 import { fetchChampions } from '@services';
 import { TLolChampion } from '@types';
 
-type TProps = {
-  champions: TLolChampion[];
-};
-
-const ChampionsPage: NextPage<TProps> = ({ champions }) => {
+const ChampionsPage: NextPage = () => {
   return (
     <LolLayout>
-      <Champions champions={champions} />
+      <Champions />
     </LolLayout>
   );
 };
 
-export const getStaticProps: GetStaticProps<TProps> = async () => {
-  const champions = await fetchChampions();
+export const getStaticProps: GetStaticProps = async () => {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(['champions'], fetchChampions);
 
   return {
-    props: { champions },
+    props: { dehydratedState: dehydrate(queryClient) },
   };
 };
 

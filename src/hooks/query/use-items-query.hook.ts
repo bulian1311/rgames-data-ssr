@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchItemsMap } from '@services';
+import { fetchItems } from '@services';
 
 export const useItemsQuery = () => {
-  const query = useQuery(['itemsMap'], fetchItemsMap);
+  const query = useQuery(['items'], fetchItems);
 
   return query;
 };
