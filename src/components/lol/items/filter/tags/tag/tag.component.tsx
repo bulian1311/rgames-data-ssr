@@ -17,7 +17,7 @@ export const ItemTag = ({ tag, ...props }: Props): JSX.Element => {
     <span
       onClick={handleClick}
       className={clsx('text-sm leading-3 cursor-pointer block px-2 py-1', {
-        'text-slate-400 hover:text-slate-200': activeTags.includes(tag),
+        'text-slate-400 hover:text-slate-200': !activeTags.includes(tag),
         'bg-purple-900 text-slate-200': activeTags.includes(tag),
       })}
       {...props}
