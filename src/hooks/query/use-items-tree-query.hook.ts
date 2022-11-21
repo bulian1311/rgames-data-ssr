@@ -2,7 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchItemsTree } from '@services';
 
 export const useItemsTreeQuery = () => {
-  const query = useQuery(['itemsTree'], fetchItemsTree);
+  const { data, isLoading, isSuccess } = useQuery(
+    ['itemsTree'],
+    fetchItemsTree
+  );
 
-  return query;
+  return {
+    itemsTree: data,
+    isItemsTreeLoading: isLoading,
+    isItemsTreeSuccess: isSuccess,
+  };
 };

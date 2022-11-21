@@ -1,12 +1,22 @@
 import React from 'react';
+import { useItemsQuery, useItemsTreeQuery } from '@hooks';
 import { ItemsSearch } from './search';
 import { ItemsTags } from './tags';
 import { Props } from './filter.props';
 
-export const ItemsFilter = ({ tree, ...props }: Props): JSX.Element => {
+export const ItemsFilter = ({ ...props }: Props): JSX.Element => {
+  const { itemsTree, isItemsTreeSuccess, isItemsTreeLoading } =
+    useItemsTreeQuery();
+
   const renderTags = () => {
-    return tree.map((t) => <ItemsTags key={t.header} tree={t} />);
+    if (!itemsTree || !isItemsTreeSuccess) return;
+
+    return itemsTree.map((t) => <ItemsTags key={t.header} tree={t} />);
   };
+
+  if (isItemsTreeLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex flex-col" {...props}>

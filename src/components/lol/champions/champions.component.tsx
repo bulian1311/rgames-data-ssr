@@ -14,7 +14,8 @@ import { filterChampions } from './champions.helpers';
 import { Props } from './champions.props';
 
 export const Champions = ({ ...props }: Props): JSX.Element => {
-  const { data: champions, isLoading, isSuccess } = useChampionsQuery();
+  const { champions, isChampionsLoading, isChampionsSuccess } =
+    useChampionsQuery();
   const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
   const [state, dispatch] = useReducer(ChampionsReducer, {
     searchQery: '',
@@ -37,7 +38,7 @@ export const Champions = ({ ...props }: Props): JSX.Element => {
   }
 
   const renderChampions = () => {
-    if (!isSuccess) return;
+    if (!isChampionsSuccess || !champions) return;
 
     const filteredChampions = useMemo(
       () => filterChampions(champions, state),
@@ -49,7 +50,7 @@ export const Champions = ({ ...props }: Props): JSX.Element => {
     ));
   };
 
-  if (isLoading) {
+  if (isChampionsLoading) {
     return <span>Loading</span>;
   }
 

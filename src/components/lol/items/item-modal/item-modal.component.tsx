@@ -8,11 +8,15 @@ export const ItemModal = ({
   itemId,
   ...props
 }: Props): JSX.Element => {
-  const { data, isSuccess } = useItemsMapQuery();
+  const { itemsMap, isItemsMapSuccess, isItemsMapLoading } = useItemsMapQuery();
 
   const renderContent = () => {
-    if (!isSuccess) return;
-    const item = data[itemId];
+    if (!isItemsMapSuccess || !itemsMap) return;
+    const item = itemsMap[itemId];
+
+    if (isItemsMapLoading) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <div className="flex gap-2" {...props}>

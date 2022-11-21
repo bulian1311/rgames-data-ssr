@@ -2,7 +2,7 @@ import React, { useState, useReducer, useMemo } from 'react';
 import clsx from 'clsx';
 import { Display } from '@components';
 import { TDisplayValue } from '@types';
-import { useItemsQuery, useItemsTreeQuery } from '@hooks';
+import { useItemsQuery } from '@hooks';
 import { ItemsFilter } from './filter';
 import { ItemLine } from './item-line';
 import { ItemLarge } from './item-large';
@@ -18,8 +18,7 @@ export const Items = ({ ...props }: Props): JSX.Element => {
     activeTags: [],
   });
 
-  const { data: items, isLoading, isSuccess } = useItemsQuery();
-  const { data: tree } = useItemsTreeQuery();
+  const { items, isItemsLoading, isItemsSuccess } = useItemsQuery();
 
   const [displayValue, setDisplayValue] = useState<TDisplayValue>('cell');
 
@@ -38,20 +37,20 @@ export const Items = ({ ...props }: Props): JSX.Element => {
   }
 
   const renderItems = () => {
-    if (!isSuccess) return;
+    if (!isItemsSuccess || !items) return;
 
     let filteredItems = useMemo(() => filterItems(items, state), [state]);
 
     return filteredItems.map((item) => <Item key={item.id} item={item} />);
   };
 
-  if (isLoading) {
+  if (isItemsLoading) {
     return <span>'Loading'</span>;
   }
 
   return (
     <ItemsProvider value={{ state, dispatch }}>
-      <ItemsFilter tree={tree!} />
+      <ItemsFilter />
       <div className="flex items-center justify-end">
         <Display
           displayValue={displayValue}
