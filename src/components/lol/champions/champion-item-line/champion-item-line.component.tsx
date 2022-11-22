@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { championImagePreviewUrl } from '@services';
 import { Props } from './champion-item-line.props';
 
 export const ChampionItemLine = ({
@@ -12,7 +13,7 @@ export const ChampionItemLine = ({
         <a>
           <img
             className="hover:scale-110"
-            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${champion.image}`}
+            src={championImagePreviewUrl(champion.image)}
             width={80}
             height={80}
           />

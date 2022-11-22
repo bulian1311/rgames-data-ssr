@@ -1,42 +1,44 @@
 import React from 'react';
-import { Headline } from '@components';
-import { URL, VERSION } from '@services';
-//import { useAppSelector } from '@hooks';
-//import { selectChampion, selectChampionStatus } from '@store';
+import Image from 'next/image';
+import { Headline, Block } from '@components';
+import {
+  championImageUrl,
+  championImagePassiveUrl,
+  championImageSpellUrl,
+} from '@services';
+
 import { Props } from './champion-full.props';
 
-export const Champion = ({ ...props }: Props): JSX.Element => {
-  // const champion = useAppSelector(selectChampion);
-  // const status = useAppSelector(selectChampionStatus);
-  const imgurl = `${URL}cdn/${VERSION}/img`;
-
-  //if (!champion || status === 'pending') return <div>Loading...</div>;
-
+export const ChampionFull = ({ champion, ...props }: Props): JSX.Element => {
   return (
     <div className="flex gap-4">
-      {/* <img
-        src={`${imgurl}/champion/${champion && champion.image.full}`}
-        width={120}
-        height={120}
-      />
-      <div className="flex flex-col justify-between">
-        <Headline>{`${champion.id} (${champion.name})`}</Headline>
-        <div className="flex gap-1">
-          <img
-            src={`${imgurl}/passive/${champion.passive.image.full}`}
-            width={50}
-            height={50}
+      <Block className="flex flex-col">
+        <div className="flex gap-4">
+          <Image
+            src={championImageUrl(champion.image.full)}
+            width={120}
+            height={120}
           />
-          {champion.spells.map((spell) => (
-            <img
-              key={spell.id}
-              src={`${imgurl}/spell/${spell.image.full}`}
-              width={50}
-              height={50}
-            />
-          ))}
+          <div className="flex flex-col justify-between">
+            <Headline>{`${champion.id} (${champion.name})`}</Headline>
+            <div className="flex gap-1">
+              <Image
+                src={championImagePassiveUrl(champion.passive.image.full)}
+                width={50}
+                height={50}
+              />
+              {champion.spells.map((spell) => (
+                <Image
+                  key={spell.id}
+                  src={championImageSpellUrl(spell.image.full)}
+                  width={50}
+                  height={50}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      </div> */}
+      </Block>
     </div>
   );
 };

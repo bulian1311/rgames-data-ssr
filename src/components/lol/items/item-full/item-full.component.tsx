@@ -1,13 +1,23 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Headline } from '@components';
+import { useItemsMapQuery } from '@hooks';
+import { itemImageUrl } from '@services';
 import { ItemInto } from './item-into';
 import { TreeDiagram } from '../tree-diagram';
 import { Props } from './item-full.props';
 
-export const ItemFull = ({ item, ...props }: Props): JSX.Element => {
+export const ItemFull = ({ ...props }: Props): JSX.Element => {
   const router = useRouter();
-  const itemId = router.query.itemId;
+  const itemId = router.query.pid;
+
+  const { itemsMap, isItemsMapLoading } = useItemsMapQuery();
+
+  if (isItemsMapLoading || !itemsMap) {
+    return <div>Loading...</div>;
+  }
+
+  const item = itemsMap[itemId as string];
 
   return (
     <div {...props}>
@@ -23,10 +33,7 @@ export const ItemFull = ({ item, ...props }: Props): JSX.Element => {
       </div>
 
       <div className="flex flex-wrap items-start gap-4 justify-between mt-4">
-        <img
-          src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image.full}`}
-          alt={item.name}
-        />
+        <img src={itemImageUrl(item.image.full)} alt={item.name} />
 
         <div className="flex flex-col gap-4 flex-1">
           <div dangerouslySetInnerHTML={{ __html: item.description }} />

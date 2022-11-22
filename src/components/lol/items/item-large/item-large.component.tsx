@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { itemImageUrl } from '@services';
 import { ItemModal } from '../item-modal';
 import { Props } from './item-large.props';
 
@@ -13,7 +14,7 @@ export const ItemLarge = ({ item }: Props): JSX.Element => {
               className="rounded-md"
               width={80}
               height={80}
-              src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/item/${item.image}`}
+              src={itemImageUrl(item.image)}
             />
           </div>
         </a>

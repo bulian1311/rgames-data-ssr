@@ -51,7 +51,7 @@ export const fetchChampions = async (): Promise<TLolChampion[]> => {
   }
 };
 
-export const fetchChampion = async (
+export const fetchChampionById = async (
   id: string
 ): Promise<TResLolChampionFull | null> => {
   try {

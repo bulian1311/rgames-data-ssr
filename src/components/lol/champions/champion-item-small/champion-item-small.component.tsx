@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { championImagePreviewUrl } from '@services';
 import { Props } from './champion-item-small.props';
 
 export const ChampionItemSmall = ({
@@ -11,7 +12,7 @@ export const ChampionItemSmall = ({
       <Link href={`/lol/champion/${champion.id}`}>
         <a>
           <img
-            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${champion.image}`}
+            src={championImagePreviewUrl(champion.image)}
             width={96}
             height={96}
           />
