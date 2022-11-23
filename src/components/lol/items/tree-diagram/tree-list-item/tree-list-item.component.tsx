@@ -1,8 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useAppSelector } from '@hooks';
-import { selectItemById } from '@store';
+import { useItemsMapQuery } from '@hooks';
 import { TreeList } from '../tree-list';
 import { ItemModal } from '../../item-modal';
 import { Props } from './tree-list-item.props';
@@ -13,7 +12,11 @@ export const TreeListItem = ({
   length,
   ...props
 }: Props): JSX.Element => {
-  const item = useAppSelector(selectItemById(itemId));
+  const { itemsMap, isItemsMapLoading } = useItemsMapQuery();
+
+  if (!itemsMap || isItemsMapLoading) return <div>Loading...</div>;
+
+  const item = itemsMap[itemId];
 
   return (
     <li className="relative p-6" {...props}>
